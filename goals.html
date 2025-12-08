@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Valley of Focus - Calm</title>
+    <style>
+        :root { 
+            --primary: #2E7D32; 
+            --danger: #c62828; 
+            --bg: #ffffff;
+            --surface: rgba(255, 255, 255, 0.96);
+        }
+        
+        body { 
+            margin: 0; 
+            overflow: hidden; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #87CEEB; 
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        canvas { display: block; touch-action: none; outline: none; }
+
+        /* --- SIDEBAR --- */
+        #sidebar {
+            position: absolute; top: 0; left: 0; bottom: 0;
+            width: 85%; max-width: 380px;
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            box-shadow: 4px 0 25px rgba(0,0,0,0.15);
+            display: flex; flex-direction: column;
+            transform: translateX(-105%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 100;
+        }
+        #sidebar.open { transform: translateX(0); }
+        
+        #toggle-sidebar {
+            position: absolute; top: 20px; left: 20px;
+            width: 50px; height: 50px;
+            background: white; border-radius: 50%;
+            border: none; cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; z-index: 90;
+            transition: transform 0.1s;
+        }
+        #toggle-sidebar:active { transform: scale(0.9); }
+
+        .sb-header { padding: 25px 20px; border-bottom: 1px solid #eee; }
+        h2 { margin: 0; font-size: 1.5rem; color: #222; font-weight: 800; }
+        .day-counter { font-size: 0.95rem; color: #666; margin-top: 5px; font-weight: 500; }
+
+        .tabs { display: flex; padding: 0 10px; border-bottom: 1px solid #eee; }
+        .tab { 
+            flex: 1; border: none; background: none; padding: 15px 0; 
+            font-weight: 600; color: #999; cursor: pointer; position: relative; font-size: 0.9rem;
+        }
+        .tab.active { color: var(--primary); }
+        .tab.active::after {
+            content: ''; position: absolute; bottom: -1px; left: 20%; right: 20%;
+            height: 3px; background: var(--primary); border-radius: 3px 3px 0 0;
+        }
+
+        #goal-list { flex: 1; overflow-y: auto; padding: 15px; -webkit-overflow-scrolling: touch; }
+        
+        .goal-item {
+            background: white; border-radius: 16px; padding: 16px;
+            margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid #f0f0f0; transition: all 0.2s;
+            position: relative; overflow: hidden;
+        }
+        .goal-item.selected { border: 2px solid var(--primary); background: #f1f8e9; }
+        .goal-item.dead { border-left: 4px solid var(--danger); opacity: 0.85; background: #fafafa; }
+        .goal-item.completed { border-left: 4px solid gold; background: #fffde7; }
+
+        .gi-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .gi-title { font-weight: 700; color: #333; font-size: 1rem; }
+        .gi-badge { font-size: 0.75rem; background: #eee; padding: 4px 10px; border-radius: 20px; font-weight: 600; color: #555; }
+        
+        .gi-actions { display: flex; gap: 10px; margin-top: 12px; }
+        .btn-action {
+            flex: 1; border: none; padding: 12px; border-radius: 10px;
+            cursor: pointer; font-weight: 700; font-size: 0.9rem;
+        }
+        .btn-check { background: #E8F5E9; color: var(--primary); }
+        .btn-fail { background: #FFEBEE; color: var(--danger); }
+
+        .add-form { padding: 20px; border-top: 1px solid #eee; background: #fafafa; }
+        .input-row { display: flex; gap: 10px; margin-bottom: 12px; }
+        input { 
+            padding: 14px; border: 1px solid #e0e0e0; border-radius: 12px; font-size: 1rem; outline: none; 
+            background: white; -webkit-appearance: none;
+        }
+        #new-goal-name { flex: 1; }
+        #new-goal-days { width: 60px; text-align: center; }
+        
+        .btn-main { 
+            width: 100%; padding: 16px; background: var(--primary); 
+            color: white; border: none; border-radius: 12px; font-weight: 700; font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+        }
+        .btn-main:active { transform: scale(0.98); }
+
+        #sound-toggle {
+            position: absolute; top: 20px; right: 20px;
+            background: white; padding: 12px 16px;
+            border-radius: 30px; cursor: pointer; font-weight: 700; font-size: 0.9rem;
+            display: flex; align-items: center; gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15); z-index: 90;
+            transition: all 0.2s;
+        }
+        #sound-toggle.active { background: #E8F5E9; color: var(--primary); }
+
+        #toast {
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
+            background: rgba(0,0,0,0.8); color: white; padding: 12px 24px; border-radius: 30px;
+            font-weight: 600; opacity: 0; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none; z-index: 200; text-align: center; width: max-content;
+        }
+        #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+        @media (min-width: 768px) {
+            #toggle-sidebar { display: none; }
+            #sidebar { transform: translateX(0); width: 320px; }
+            #toggle-sidebar { display: flex; left: 340px; }
+            #sidebar { transform: translateX(-100%); }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+</head>
+<body>
+
+    <button id="toggle-sidebar">☰</button>
+    <div id="sidebar">
+        <div class="sb-header">
+            <h2>Valley of Focus</h2>
+            <div class="day-counter">Day <span id="day-display">1</span></div>
+        </div>
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('active')">Active</button>
+            <button class="tab" onclick="switchTab('dead')">Graveyard</button>
+            <button class="tab" onclick="switchTab('completed')">Eternal</button>
+        </div>
+        <div id="goal-list"></div>
+        <div class="add-form">
+            <div class="input-row">
+                <input type="text" id="new-goal-name" placeholder="Goal Name">
+                <input type="number" id="new-goal-days" value="30" placeholder="30">
+            </div>
+            <button class="btn-main" id="btn-create">Plant Tree</button>
+        </div>
+    </div>
+
+    <div id="sound-toggle">
+        <span id="sound-icon">🔇</span> Enable Audio
+    </div>
+
+    <div id="toast">Notification</div>
+
+    <script>
+        // --- AUDIO ENGINE (TWEAKED FOR LOWER WIND) ---
+        const AudioEngine = {
+            ctx: null,
+            masterGain: null,
+            windGain: null,
+            isMuted: true,
+            nextBirdTime: 0,
+
+            init: function() {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                this.ctx = new AudioContext();
+                
+                this.masterGain = this.ctx.createGain();
+                this.masterGain.gain.value = 0;
+                this.masterGain.connect(this.ctx.destination);
+                
+                this.createWind();
+                this.loop();
+            },
+
+            createWind: function() {
+                // Pink Noise
+                const bufferSize = this.ctx.sampleRate * 2;
+                const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                let lastOut = 0;
+                
+                // REDUCED VOLUME: Multiplier changed from 3.5 to 0.5
+                for (let i = 0; i < bufferSize; i++) {
+                    const white = Math.random() * 2 - 1;
+                    data[i] = (lastOut + (0.02 * white)) / 1.02;
+                    lastOut = data[i];
+                    data[i] *= 0.5; // Much quieter base noise
+                }
+                
+                const windNode = this.ctx.createBufferSource();
+                windNode.buffer = buffer;
+                windNode.loop = true;
+
+                // Lowpass filter
+                const filter = this.ctx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.value = 250; // Lower frequency for softer rumble
+
+                // DEDICATED WIND GAIN for fine control
+                this.windGain = this.ctx.createGain();
+                this.windGain.gain.value = 0.08; // Very subtle background level
+
+                windNode.connect(filter);
+                filter.connect(this.windGain);
+                this.windGain.connect(this.masterGain);
+                
+                windNode.start();
+            },
+
+            playBird: function() {
+                if(this.isMuted) return;
+
+                const t = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+
+                osc.type = 'sine';
+                const startFreq = 2000 + Math.random() * 2000;
+                osc.frequency.setValueAtTime(startFreq, t);
+                osc.frequency.exponentialRampToValueAtTime(startFreq * 0.5, t + 0.1);
+
+                gain.gain.setValueAtTime(0, t);
+                gain.gain.linearRampToValueAtTime(0.08, t + 0.01); // Slightly lowered bird volume
+                gain.gain.exponentialRampToValueAtTime(0.001, t + 0.15);
+
+                osc.connect(gain);
+                gain.connect(this.masterGain);
+                
+                osc.start(t);
+                osc.stop(t + 0.2);
+                
+                if(Math.random() > 0.5) {
+                    const osc2 = this.ctx.createOscillator();
+                    const gain2 = this.ctx.createGain();
+                    osc2.frequency.setValueAtTime(startFreq * 1.2, t + 0.15);
+                    osc2.frequency.exponentialRampToValueAtTime(startFreq * 0.8, t + 0.25);
+                    gain2.gain.setValueAtTime(0, t+0.15);
+                    gain2.gain.linearRampToValueAtTime(0.08, t + 0.16);
+                    gain2.gain.exponentialRampToValueAtTime(0.001, t + 0.3);
+                    
+                    osc2.connect(gain2);
+                    gain2.connect(this.masterGain);
+                    osc2.start(t + 0.15);
+                    osc2.stop(t + 0.3);
+                }
+            },
+
+            toggle: function() {
+                if(!this.ctx) this.init();
+                if(this.ctx.state === 'suspended') this.ctx.resume();
+
+                this.isMuted = !this.isMuted;
+                // Master volume
+                this.masterGain.gain.setTargetAtTime(this.isMuted ? 0 : 1.0, this.ctx.currentTime, 0.5);
+            },
+
+            loop: function() {
+                requestAnimationFrame(() => this.loop());
+                if(!this.isMuted && Date.now() > this.nextBirdTime) {
+                    this.playBird();
+                    this.nextBirdTime = Date.now() + 3000 + Math.random() * 7000;
+                }
+            }
+        };
+
+        // --- SCENE & APP LOGIC (UNCHANGED) ---
+        const SceneEngine = {
+            scene: null, camera: null, renderer: null, controls: null,
+            raycaster: new THREE.Raycaster(), mouse: new THREE.Vector2(),
+            goals: [],
+            
+            init: function() {
+                this.scene = new THREE.Scene();
+                this.scene.background = new THREE.Color(0x87CEEB);
+                this.scene.fog = new THREE.FogExp2(0x87CEEB, 0.02);
+
+                this.camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+                this.camera.position.set(0, 15, 30);
+
+                this.renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+                this.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                this.renderer.shadowMap.enabled = true;
+                this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+                document.body.appendChild(this.renderer.domElement);
+
+                const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
+                this.scene.add(hemi);
+
+                const sun = new THREE.DirectionalLight(0xfff5e1, 1.2);
+                sun.position.set(50, 100, 50);
+                sun.castShadow = true;
+                sun.shadow.mapSize.width = 1024;
+                sun.shadow.mapSize.height = 1024;
+                this.scene.add(sun);
+
+                this.createGround();
+                this.setupInteraction();
+                this.animate();
+            },
+
+            createGround: function() {
+                const simplex = new SimplexNoise();
+                const geo = new THREE.PlaneGeometry(200, 200, 100, 100);
+                const pos = geo.attributes.position;
+                const colors = [];
+                const cBase = new THREE.Color(0x7CB342);
+                const cDry = new THREE.Color(0xE6D4A3);
+
+                for(let i=0; i<pos.count; i++){
+                    const x = pos.getX(i);
+                    const y = pos.getY(i);
+                    let z = simplex.noise2D(x*0.02, y*0.02) * 2; 
+                    z += simplex.noise2D(x*0.05, y*0.05) * 0.5;
+                    pos.setZ(i, z);
+                    
+                    const mix = (z + 2) / 4;
+                    const c = cBase.clone().lerp(cDry, Math.max(0, mix - 0.4));
+                    colors.push(c.r, c.g, c.b);
+                }
+                geo.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+                geo.computeVertexNormals();
+
+                const mat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 1 });
+                const ground = new THREE.Mesh(geo, mat);
+                ground.rotation.x = -Math.PI / 2;
+                ground.receiveShadow = true;
+                this.scene.add(ground);
+                
+                this.getGroundY = (x, z) => {
+                    let h = simplex.noise2D(x*0.02, -z*0.02) * 2;
+                    h += simplex.noise2D(x*0.05, -z*0.05) * 0.5;
+                    return h;
+                };
+            },
+
+            createTree: function(goal) {
+                const x = (Math.random()-0.5) * 60;
+                const z = (Math.random()-0.5) * 60;
+                const y = this.getGroundY(x, z);
+
+                const group = new THREE.Group();
+                group.position.set(x, y, z);
+                group.userData = { id: goal.id };
+
+                const tGeo = new THREE.CylinderGeometry(0.05, 0.2, 1, 6);
+                const tMat = new THREE.MeshStandardMaterial({ color: 0x5D4037 });
+                const trunk = new THREE.Mesh(tGeo, tMat);
+                trunk.position.y = 0.5;
+                trunk.castShadow = true;
+                trunk.name = "TRUNK";
+                group.add(trunk);
+
+                const lGeo = new THREE.DodecahedronGeometry(0.5);
+                const lMat = new THREE.MeshStandardMaterial({ color: 0x43A047 });
+                const leaves = new THREE.Mesh(lGeo, lMat);
+                leaves.position.y = 1.2;
+                leaves.scale.set(0.1, 0.1, 0.1);
+                leaves.castShadow = true;
+                leaves.name = "LEAVES";
+                group.add(leaves);
+
+                const fGroup = new THREE.Group();
+                fGroup.name = "FRUITS";
+                leaves.add(fGroup);
+
+                this.scene.add(group);
+                goal.mesh = group;
+                this.updateTree(goal);
+            },
+
+            updateTree: function(goal) {
+                if(!goal.mesh) return;
+                
+                const trunk = goal.mesh.getObjectByName("TRUNK");
+                const leaves = goal.mesh.getObjectByName("LEAVES");
+                const fruits = goal.mesh.getObjectByName("FRUITS");
+
+                if(goal.status === 'dead') {
+                    trunk.material = new THREE.MeshStandardMaterial({ color: 0x3E2723 });
+                    leaves.visible = false;
+                    goal.mesh.rotation.z = 0.2;
+                } else {
+                    const progress = goal.streak / goal.totalDays;
+                    const scale = 1 + (progress * 2.5);
+                    
+                    trunk.scale.set(1 + progress, scale, 1 + progress);
+                    leaves.visible = true;
+                    leaves.scale.setScalar(scale);
+                    leaves.position.y = (scale * 0.5) + 0.5;
+
+                    if(goal.status === 'completed' && fruits.children.length === 0) {
+                        const fGeo = new THREE.SphereGeometry(0.15, 8, 8);
+                        const fMat = new THREE.MeshStandardMaterial({ color: 0xD32F2F });
+                        const pos = [[0.3, 0.2, 0], [-0.3, 0.3, 0.1], [0, 0.4, -0.3]];
+                        pos.forEach(p => {
+                            const f = new THREE.Mesh(fGeo, fMat);
+                            f.position.set(...p);
+                            fruits.add(f);
+                        });
+                        leaves.material = new THREE.MeshStandardMaterial({ color: 0xFDD835, emissive: 0x222200 });
+                    }
+                }
+            },
+
+            setupInteraction: function() {
+                this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                this.controls.enableDamping = true;
+                this.controls.maxPolarAngle = Math.PI / 2 - 0.05;
+                
+                let touchStartTime = 0;
+                window.addEventListener('pointerdown', () => { touchStartTime = Date.now(); });
+                window.addEventListener('pointerup', (e) => {
+                    if(Date.now() - touchStartTime < 200) {
+                        this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+                        this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+                        this.raycaster.setFromCamera(this.mouse, this.camera);
+                        const intersects = this.raycaster.intersectObjects(this.scene.children, true);
+                        
+                        for(let hit of intersects) {
+                            let obj = hit.object;
+                            while(obj.parent && obj.parent.type !== 'Scene') {
+                                if(obj.userData.id) {
+                                    App.selectGoalFrom3D(obj.userData.id);
+                                    return;
+                                }
+                                obj = obj.parent;
+                            }
+                        }
+                    }
+                });
+
+                window.addEventListener('resize', () => {
+                    this.camera.aspect = window.innerWidth / window.innerHeight;
+                    this.camera.updateProjectionMatrix();
+                    this.renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+            },
+
+            animate: function() {
+                requestAnimationFrame(() => this.animate());
+                this.controls.update();
+                this.renderer.render(this.scene, this.camera);
+            }
+        };
+
+        const App = {
+            state: {
+                day: 1,
+                goals: [],
+                activeTab: 'active'
+            },
+
+            init: function() {
+                SceneEngine.init();
+                
+                document.getElementById('toggle-sidebar').onclick = () => {
+                    document.getElementById('sidebar').classList.toggle('open');
+                };
+                document.getElementById('sound-toggle').onclick = (e) => {
+                    AudioEngine.toggle();
+                    document.getElementById('sound-toggle').classList.toggle('active');
+                    document.getElementById('sound-icon').innerText = AudioEngine.isMuted ? '🔇' : '🐦';
+                };
+                document.getElementById('btn-create').onclick = () => this.addGoal();
+                
+                this.addGoal("Daily Meditation", 5);
+                this.render();
+            },
+
+            addGoal: function(nameOverride, daysOverride) {
+                const name = nameOverride || document.getElementById('new-goal-name').value;
+                const days = daysOverride || parseInt(document.getElementById('new-goal-days').value);
+                
+                if(!name) return;
+
+                const newGoal = {
+                    id: Date.now(),
+                    name: name,
+                    totalDays: days,
+                    streak: 0,
+                    status: 'active',
+                    mesh: null
+                };
+
+                this.state.goals.push(newGoal);
+                SceneEngine.createTree(newGoal);
+                
+                document.getElementById('new-goal-name').value = '';
+                this.showToast("Tree Planted!");
+                this.render();
+            },
+
+            processGoal: function(id, action) {
+                const goal = this.state.goals.find(g => g.id === id);
+                if(!goal) return;
+
+                if(action === 'check') {
+                    goal.streak++;
+                    if(goal.streak >= goal.totalDays) {
+                        goal.status = 'completed';
+                        this.showToast("Goal Completed! Eternal Glory!");
+                    } else {
+                        this.showToast("Progress Saved! Tree Growing.");
+                    }
+                } else {
+                    goal.status = 'dead';
+                    this.showToast("Goal Missed. The Tree Died.");
+                }
+                
+                SceneEngine.updateTree(goal);
+                this.render();
+            },
+
+            selectGoalFrom3D: function(id) {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.add('open');
+                
+                const goal = this.state.goals.find(g => g.id === id);
+                window.switchTab(goal.status);
+                
+                setTimeout(() => {
+                    const el = document.getElementById(`goal-${id}`);
+                    if(el) {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        el.classList.add('selected');
+                        setTimeout(() => el.classList.remove('selected'), 1500);
+                    }
+                }, 100);
+            },
+
+            render: function() {
+                const container = document.getElementById('goal-list');
+                container.innerHTML = '';
+                
+                const filtered = this.state.goals.filter(g => g.status === this.state.activeTab);
+                
+                if(filtered.length === 0) {
+                    container.innerHTML = `<div style="text-align:center; color:#aaa; margin-top:20px;">No items in ${this.state.activeTab}</div>`;
+                }
+
+                filtered.forEach(g => {
+                    const div = document.createElement('div');
+                    div.className = `goal-item ${g.status}`;
+                    div.id = `goal-${g.id}`;
+                    
+                    let btnHtml = '';
+                    if(g.status === 'active') {
+                        btnHtml = `
+                        <div class="gi-actions">
+                            <button class="btn-action btn-check" onclick="App.processGoal(${g.id}, 'check')">Do (+)</button>
+                            <button class="btn-action btn-fail" onclick="App.processGoal(${g.id}, 'fail')">Miss (x)</button>
+                        </div>`;
+                    }
+
+                    div.innerHTML = `
+                        <div class="gi-header">
+                            <span class="gi-title">${g.name}</span>
+                            <span class="gi-badge">${g.streak}/${g.totalDays}</span>
+                        </div>
+                        ${btnHtml}
+                    `;
+                    
+                    div.addEventListener('click', (e) => {
+                        if(e.target.tagName !== 'BUTTON') {
+                            SceneEngine.controls.target.copy(g.mesh.position);
+                            SceneEngine.controls.update();
+                            if(window.innerWidth < 768) {
+                                document.getElementById('sidebar').classList.remove('open');
+                            }
+                        }
+                    });
+
+                    container.appendChild(div);
+                });
+            },
+
+            showToast: function(msg) {
+                const t = document.getElementById('toast');
+                t.innerText = msg;
+                t.classList.add('show');
+                setTimeout(() => t.classList.remove('show'), 3000);
+            }
+        };
+
+        window.switchTab = function(tabName) {
+            App.state.activeTab = tabName;
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`.tab[onclick="switchTab('${tabName}')"]`).classList.add('active');
+            App.render();
+        }
+
+        App.init();
+
+    </script>
+</body>
+</html>
