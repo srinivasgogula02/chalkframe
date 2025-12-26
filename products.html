@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Chalkframe | AI Transformation Consultancy</title>
-    <meta name="description" content="Chalkframe bridges the gap between business strategy and AI.">
+    <title>Products | Chalkframe</title>
+    <meta name="description" content="A suite of automated tools and products designed to solve specific business problems with zero overhead.">
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAMDAAAAEAIACoJQAAFgAAACgAAAAwAAAAYAAAAAEAIAAAAAAAgCUAAAAAAAAAAAAAAAAAAAAAAAAqFhD/AAQA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAEA/wACAP8AAgD/AAIA/wACAP8AAwD/AAMA/wAEAP8ABQD/AAcA/wAIAP8ACQD/AAsC/wANBP8ADwb/ABIK/wATDv8AFg7/BBgQ/xEaFP8aHBf/IB4Z/ycfG/8sIR//LyMf/zEkIv80JSP/NiYl/zgnJP84Jyb/OCcm/zgnJv83JiX/NyYj/zUlI/8yIyL/LiIg/yohHf8kHxv/KB4a/0YmI/8ABAD/315c/+liYP/oYmD/6GJg/+hiYP/oYmD/6GJg/+hiYP/oYmD/6GJg/+hiYP/oYmD/6GJg/+hiYP/oYmD/6GJg/+hiYP/oYmD/6GJg/+hiYP/oYmD/6GJg/+hiYP/oYmD/6GJg/+hiYP/oYmD/6GJg/+hiYP/oYmD/6GJg/+hiYP/oYmD/6GJg/+hiYP/oYmD/6GJg/+hiYP/pYmD/315c/wAEAP8qFhD/AAQA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAQA/yoWEP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <script>
@@ -30,7 +29,6 @@
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
                         float: {
@@ -59,19 +57,12 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
-        .glass-highlight {
-            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), rgba(255, 255, 255, 0.02));
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            box-shadow: 0 0 50px rgba(99, 102, 241, 0.1);
-        }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-50 font-sans antialiased overflow-x-hidden selection:bg-violet-500 selection:text-white">
 
     <nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-2xl z-50 glass-nav rounded-full px-2 py-2 flex items-center justify-between shadow-2xl shadow-black/20">
-        <a href="#" class="flex items-center gap-2 pl-4 group">
+        <a href="index.html" class="flex items-center gap-2 pl-4 group">
              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" height="26" width="26" class="w-auto h-6">
                 <defs>
                   <filter id="glow-filter" x="-50%" y="-50%" width="200%" height="200%">
@@ -94,241 +85,169 @@
         </a>
 
         <div class="hidden md:flex items-center gap-6 text-sm text-slate-300 font-medium">
-            <a href="#services" class="hover:text-white transition-colors">Services</a>
-            <a href="#proposalflow" class="text-violet-300 hover:text-white transition-colors flex items-center gap-1"><i class="ph-bold ph-sparkle"></i> New</a>
-            <a href="#about" class="hover:text-white transition-colors">Philosophy</a>
+            <a href="index.html" class="hover:text-white transition-colors">Consultancy</a>
+            <a href="#" class="text-white bg-white/10 px-3 py-1 rounded-full transition-colors">Products</a>
+            <a href="https://blog.chalkframe.com" class="hover:text-white transition-colors">Blog</a>
         </div>
 
         <div class="flex items-center gap-3">
              <button id="mobile-menu-btn" class="md:hidden text-white p-2">
                 <i class="ph ph-list text-xl"></i>
             </button>
-            <a href="#contact" class="hidden md:inline-flex px-5 py-2 rounded-full bg-white text-slate-900 text-xs font-bold uppercase tracking-wider hover:bg-slate-200 transition-colors">
-                Start Now
+            <a href="index.html#contact" class="hidden md:inline-flex px-5 py-2 rounded-full bg-white text-slate-900 text-xs font-bold uppercase tracking-wider hover:bg-slate-200 transition-colors">
+                Contact Sales
             </a>
         </div>
     </nav>
 
     <div id="mobile-menu" class="fixed inset-0 z-40 bg-slate-900/95 backdrop-blur-xl transform translate-y-[-100%] transition-transform duration-300 flex flex-col items-center justify-center space-y-8">
-        <a href="#proposalflow" class="text-2xl font-display font-light text-violet-300 mobile-link">ProposalFlow</a>
-        <a href="#services" class="text-2xl font-display font-light text-white mobile-link">Services</a>
-        <a href="#about" class="text-2xl font-display font-light text-white mobile-link">About</a>
-        <a href="#contact" class="px-8 py-3 bg-violet-600 rounded-full text-white font-bold mobile-link">Get Started</a>
+        <a href="index.html" class="text-2xl font-display font-light text-white mobile-link">Consultancy</a>
+        <a href="#" class="text-2xl font-display font-medium text-violet-300 mobile-link">Products</a>
+        <a href="https://blog.chalkframe.com" class="text-2xl font-display font-light text-white mobile-link">Blog</a>
+        <a href="index.html#contact" class="px-8 py-3 bg-violet-600 rounded-full text-white font-bold mobile-link">Contact Sales</a>
         <button id="close-menu" class="absolute top-8 right-8 text-slate-400 hover:text-white">
             <i class="ph ph-x text-3xl"></i>
         </button>
     </div>
 
-    <section class="relative min-h-screen flex flex-col justify-center items-center px-6 pt-20 text-center overflow-hidden">
+    <section class="relative pt-40 pb-20 px-6 text-center overflow-hidden">
         
         <div class="absolute inset-0 z-0">
             <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjJmY5bFAHqBJ8a0AreVUiUgNSAlsZWpvJuxL-OASBhHo2qZIr5HVNem37S0IhcnGuP5kDUg1NBRPipHkGYAqg7QwSUyn5qAn5f-2vNQHFeYZb0tRK-ZxVCUJDgQdVZb5CGBWKvEM5blOn20WgQdUSmEnwSLzCNSLFl2R_JVSxRkORgaZ6LdWxjtSom-gg" 
                  alt="Background" 
-                 class="w-full h-full object-cover opacity-90">
-            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/40 to-slate-900"></div>
-            <div class="absolute inset-0 bg-radial-gradient from-transparent to-slate-900/80"></div>
+                 class="w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/80 to-slate-900"></div>
         </div>
 
-        <div class="relative z-10 max-w-5xl mx-auto">
-            <div class="animate-float mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-violet-200 text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-lg">
-                <span class="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse"></span>
-                AI Transformation Consultancy
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <div class="animate-float mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-violet-200 text-xs font-mono uppercase tracking-widest backdrop-blur-md">
+                <i class="ph-fill ph-cubes"></i> Product Suite
             </div>
-            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-medium leading-[0.9] tracking-tighter mb-8 text-white drop-shadow-2xl">
-                Solving Your Most<br>
-                Complex <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-indigo-300 italic font-light">Challenges.</span>
+            <h1 class="font-display text-5xl md:text-7xl font-medium leading-[0.9] tracking-tighter mb-8 text-white">
+                Packaged <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-indigo-300 italic font-light">Intelligence.</span>
             </h1>
-            <p class="text-slate-200 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed drop-shadow-md">
-                Chalkframe bridges the gap between manual workflows and automated engines of growth. Don't just adapt to AI—build your frame around it.
+            <p class="text-slate-300 text-lg leading-relaxed max-w-2xl mx-auto">
+                Specific solutions for specific problems. Same Chalkframe quality, packaged for instant deployment.
             </p>
-            <div class="w-full max-w-lg mx-auto relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-violet-600 to-blue-600 rounded-2xl blur opacity-40 group-hover:opacity-60 transition duration-500"></div>
-                <div class="relative flex items-center bg-slate-900/60 backdrop-blur-xl border border-white/20 rounded-2xl p-2 pr-2 shadow-2xl">
-                    <div class="flex-grow text-left px-4 text-slate-300 font-mono text-sm">
-                        <span class="text-violet-400">root@chalkframe:~$</span> automate my workflow...
+        </div>
+    </section>
+
+    <section class="relative z-10 py-16 px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="glass-card p-8 rounded-3xl flex flex-col relative overflow-hidden group hover:bg-white/5 transition-all duration-300 border border-violet-500/30 shadow-lg shadow-violet-900/20">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-violet-500/10 blur-[60px] rounded-full group-hover:bg-violet-500/20 transition-all"></div>
+                
+                <div class="flex justify-between items-start mb-6 relative z-10">
+                    <div class="w-14 h-14 bg-slate-800/80 border border-violet-500/30 rounded-2xl flex items-center justify-center text-violet-400 shadow-lg">
+                        <i class="ph-fill ph-magic-wand text-3xl"></i>
                     </div>
-                    <a href="#contact" class="bg-white text-slate-900 hover:bg-slate-200 rounded-xl px-6 py-3 font-bold text-sm transition-colors shadow-lg flex items-center gap-2">
-                        Let's Build <i class="ph-bold ph-arrow-right"></i>
+                    <span class="px-3 py-1 bg-violet-500/20 border border-violet-500/30 text-violet-300 text-[10px] font-bold uppercase tracking-wider rounded-full flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 bg-violet-400 rounded-full animate-pulse"></span> Available Now
+                    </span>
+                </div>
+                
+                <h3 class="font-display text-2xl font-bold text-white mb-2 relative z-10">ProposalFlow</h3>
+                <p class="text-slate-400 text-sm mb-8 flex-grow leading-relaxed relative z-10">
+                    The AI that writes, designs, and formats professional proposals instantly. Stop using Word. Close deals in 30 seconds.
+                </p>
+                
+                <div class="pt-6 border-t border-white/5 relative z-10">
+                    <div class="flex items-end gap-2 mb-4">
+                        <span class="text-3xl font-display font-bold text-white">$9.99</span>
+                        <span class="text-xs text-slate-500 mb-1 uppercase tracking-wider">/ Pack</span>
+                    </div>
+                    <a href="https://chalkframe.com/proposalflow" target="_blank" class="block w-full py-3 bg-gradient-to-r from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 text-white text-center font-bold transition-all rounded-xl shadow-lg shadow-violet-900/30">
+                        Launch Tool
                     </a>
                 </div>
             </div>
-            <div class="mt-20 opacity-60 hover:opacity-100 transition-all duration-700">
-                <p class="text-xs font-mono text-slate-300 uppercase tracking-widest mb-6 drop-shadow">Trusted by Forward Thinking companies</p>
-                 <a href="https://elevatebox.in" target="_blank">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuaj_jIxHSabRg_VR2iE5C67X8knA2jE_Oukvzw90QNSabgBEl2AkhMm68cQdVWQSYhqKel0SAKe-VpwyuBXL4yBdw6UeEvNKHcJtCM4ahutvr126UzPjIK6AzXNRzVuzntUZDUtoQWECz_MPnI_rR27-RNyW9IZNfKd1Z8kRX7LFyMCU83jHa5b8HmY4/s320/Gemini_Generated_Image_nzgr55nzgr55nzgr-removebg-preview.png" alt="Elevatebox" class="h-8 mx-auto brightness-0 invert">
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <section id="proposalflow" class="relative z-10 py-16 md:py-24 px-6 bg-gradient-to-b from-slate-900 via-indigo-950/40 to-slate-900 overflow-hidden">
-        <div class="absolute right-[-20%] top-[20%] w-[600px] h-[600px] bg-violet-600/10 rounded-full blur-[120px]"></div>
-        
-        <div class="max-w-6xl mx-auto relative z-10">
-            <div class="glass-highlight rounded-[2rem] p-6 md:p-16 relative overflow-hidden">
+            <div class="glass-card p-8 rounded-3xl flex flex-col relative overflow-hidden group hover:bg-white/5 transition-all duration-300">
                 
-                <div class="flex flex-col lg:flex-row gap-12 items-center">
-                    <div class="w-full lg:w-1/2 space-y-6">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/20 border border-violet-500/30 text-violet-300 text-xs font-mono uppercase tracking-widest">
-                            <i class="ph-fill ph-rocket-launch"></i> New Launch
-                        </div>
-                        <h2 class="font-display text-3xl md:text-5xl font-medium text-white leading-tight">ProposalFlow</h2>
-                        <p class="text-slate-300 text-base md:text-lg leading-relaxed">
-                            Professional proposals in under 30 seconds. It's like <span class="text-white font-semibold">Canva + ChatGPT</span>, but specifically built for getting contracts signed fast.
-                        </p>
-                        <p class="text-slate-400 text-sm">
-                            Replace Microsoft Word with an intelligent engine that brands, formats, and writes persuasive content for you.
-                        </p>
-                        
-                        <div class="pt-4">
-                            <a href="https://chalkframe.com/proposalflow" target="_blank" class="inline-flex items-center gap-2 bg-white text-slate-900 hover:bg-violet-100 rounded-full px-6 py-3 md:px-8 md:py-4 font-bold transition-all transform hover:scale-105 shadow-lg shadow-violet-500/20 text-sm md:text-base">
-                                Try ProposalFlow <i class="ph-bold ph-arrow-up-right"></i>
-                            </a>
-                        </div>
+                <div class="flex justify-between items-start mb-6 relative z-10">
+                    <div class="w-14 h-14 bg-slate-800/50 border border-white/10 rounded-2xl flex items-center justify-center text-white">
+                        <i class="ph-fill ph-article text-3xl"></i>
                     </div>
-
-                    <div class="w-full lg:w-1/2">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="bg-slate-800/50 border border-white/5 p-5 rounded-2xl hover:bg-slate-800 transition-colors">
-                                <div class="text-violet-400 mb-3 text-2xl"><i class="ph-duotone ph-brain"></i></div>
-                                <h4 class="font-display text-white font-medium mb-1">Two "Brain" Modes</h4>
-                                <p class="text-xs text-slate-400 leading-normal">Choose <span class="text-white">Fast Mode</span> for speed or <span class="text-white">Reasoning Mode</span> for deep persuasion.</p>
-                            </div>
-                            <div class="bg-slate-800/50 border border-white/5 p-5 rounded-2xl hover:bg-slate-800 transition-colors">
-                                <div class="text-blue-400 mb-3 text-2xl"><i class="ph-duotone ph-cursor-click"></i></div>
-                                <h4 class="font-display text-white font-medium mb-1">Live Editor</h4>
-                                <p class="text-xs text-slate-400 leading-normal">No forms. Click and edit the final document directly. WYSIWYG simplicity.</p>
-                            </div>
-                            <div class="bg-slate-800/50 border border-white/5 p-5 rounded-2xl hover:bg-slate-800 transition-colors">
-                                <div class="text-pink-400 mb-3 text-2xl"><i class="ph-duotone ph-paint-brush-broad"></i></div>
-                                <h4 class="font-display text-white font-medium mb-1">Brand Brain</h4>
-                                <p class="text-xs text-slate-400 leading-normal">Upload assets once. AI auto-brands every proposal instantly.</p>
-                            </div>
-                            <div class="bg-slate-800/50 border border-white/5 p-5 rounded-2xl hover:bg-slate-800 transition-colors">
-                                <div class="text-green-400 mb-3 text-2xl"><i class="ph-duotone ph-chart-bar"></i></div>
-                                <h4 class="font-display text-white font-medium mb-1">Smart Tables</h4>
-                                <p class="text-xs text-slate-400 leading-normal">Auto-generated Pricing tables and ROI charts. 1-Click PDF export.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <span class="px-3 py-1 bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] font-bold uppercase tracking-wider rounded-full">
+                        Available Now
+                    </span>
                 </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="relative z-10 py-24 px-6 bg-slate-900 border-t border-white/5">
-        <div class="max-w-6xl mx-auto">
-            <div class="mb-16">
-                <h2 class="font-display text-3xl md:text-5xl font-light mb-4">The <span class="text-violet-400">Architecture</span></h2>
-                <div class="h-[1px] w-full bg-gradient-to-r from-violet-500/50 to-transparent"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
                 
-                <div class="md:col-span-2 glass-card rounded-3xl p-8 md:p-12 flex flex-col justify-center relative overflow-hidden group">
-                    <div class="absolute right-0 top-0 w-64 h-64 bg-violet-500/10 rounded-full blur-[80px] group-hover:bg-violet-500/20 transition-all duration-500"></div>
-                    <h3 class="font-display text-3xl text-white mb-4 relative z-10">The Chalk & The Frame</h3>
-                    <p class="text-slate-400 text-lg relative z-10 max-w-md">
-                        <strong class="text-white">Chalk</strong> is the human idea—fluid and creative. <br>
-                        <strong class="text-white">Frame</strong> is the automation—rigid and scalable. <br>
-                        We build the structure that lets your genius scale infinitely.
-                    </p>
-                </div>
-
-                <div class="md:row-span-2 glass-card rounded-3xl p-8 flex flex-col justify-between group hover:border-violet-500/30 transition-all">
-                    <div>
-                        <div class="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center text-violet-400 mb-6 group-hover:scale-110 transition-transform">
-                            <i class="ph-duotone ph-gear text-2xl"></i>
-                        </div>
-                        <h3 class="font-display text-2xl text-white mb-2">Internal Automation</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed">Connect legacy systems with modern AI agents. Remove the "boring" from your daily operations.</p>
+                <h3 class="font-display text-2xl font-bold text-white mb-2 relative z-10">The Forever Blog</h3>
+                <p class="text-slate-400 text-sm mb-8 flex-grow leading-relaxed relative z-10">
+                    A fully customized startup blog that matches your brand perfectly. No monthly fees, ever. Hosting is on us.
+                </p>
+                
+                <div class="pt-6 border-t border-white/5 relative z-10">
+                    <div class="flex items-end gap-2 mb-4">
+                        <span class="text-3xl font-display font-bold text-white">$99</span>
+                        <span class="text-xs text-slate-500 mb-1 uppercase tracking-wider">/ One-Time</span>
                     </div>
-                    <div class="w-full h-32 bg-slate-800/50 rounded-xl mt-4 border border-white/5 relative overflow-hidden">
-                        <div class="absolute top-4 left-4 right-4 h-2 bg-slate-700 rounded-full"></div>
-                        <div class="absolute top-8 left-4 w-1/2 h-2 bg-slate-700 rounded-full"></div>
-                        <div class="absolute bottom-[-20px] right-[-20px] text-violet-500/20">
-                            <i class="ph-fill ph-gear text-9xl"></i>
-                        </div>
+                    <a href="blog-launch.html" class="block w-full py-3 bg-white text-slate-900 text-center font-bold hover:bg-slate-200 transition-colors rounded-xl shadow-lg">
+                        View Details
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card p-8 rounded-3xl flex flex-col relative overflow-hidden group opacity-60 hover:opacity-100 transition-all duration-500 border border-dashed border-slate-700">
+                
+                <div class="flex justify-between items-start mb-6 relative z-10">
+                    <div class="w-14 h-14 bg-slate-800/30 border border-white/5 rounded-2xl flex items-center justify-center text-slate-500">
+                        <i class="ph-fill ph-robot text-3xl"></i>
                     </div>
+                    <span class="px-3 py-1 bg-slate-800 border border-slate-700 text-slate-500 text-[10px] font-bold uppercase tracking-wider rounded-full">
+                        Coming Soon
+                    </span>
                 </div>
-
-                <div class="glass-card rounded-3xl p-8 group hover:bg-white/5 transition-all">
-                    <i class="ph-duotone ph-brain text-4xl text-violet-400 mb-4"></i>
-                    <h3 class="font-display text-xl text-white mb-2">Custom AI Solutions</h3>
-                    <p class="text-slate-400 text-sm">Bespoke models built for your data. Chatbots, predictive engines, and analysis tools.</p>
+                
+                <h3 class="font-display text-2xl font-bold text-slate-300 mb-2 relative z-10">AI SEO Autopilot</h3>
+                <p class="text-slate-500 text-sm mb-8 flex-grow leading-relaxed relative z-10">
+                    Automated programmatic SEO engine. Generate 1,000+ landing pages based on your niche keywords automatically.
+                </p>
+                
+                <div class="pt-6 border-t border-white/5 relative z-10">
+                    <div class="flex items-end gap-2 mb-4 opacity-50">
+                        <span class="text-3xl font-display font-bold text-slate-400">$499</span>
+                        <span class="text-xs text-slate-600 mb-1 uppercase tracking-wider">/ Setup</span>
+                    </div>
+                    <button disabled class="block w-full py-3 bg-slate-800/50 text-slate-500 text-center font-bold cursor-not-allowed rounded-xl border border-white/5">
+                        Join Waitlist
+                    </button>
                 </div>
-
-                <div class="glass-card rounded-3xl p-8 group hover:bg-white/5 transition-all">
-                    <i class="ph-duotone ph-trend-up text-4xl text-green-400 mb-4"></i>
-                    <h3 class="font-display text-xl text-white mb-2">Programmatic SEO</h3>
-                    <p class="text-slate-400 text-sm">Dominate rankings with data-driven content strategies and automated page generation.</p>
-                </div>
-
             </div>
+
+            <div class="glass-card p-8 rounded-3xl flex flex-col relative overflow-hidden group opacity-60 hover:opacity-100 transition-all duration-500 border border-dashed border-slate-700">
+                
+                <div class="flex justify-between items-start mb-6 relative z-10">
+                    <div class="w-14 h-14 bg-slate-800/30 border border-white/5 rounded-2xl flex items-center justify-center text-slate-500">
+                        <i class="ph-fill ph-database text-3xl"></i>
+                    </div>
+                    <span class="px-3 py-1 bg-slate-800 border border-slate-700 text-slate-500 text-[10px] font-bold uppercase tracking-wider rounded-full">
+                        Coming Soon
+                    </span>
+                </div>
+                
+                <h3 class="font-display text-2xl font-bold text-slate-300 mb-2 relative z-10">RAG Knowledge Base</h3>
+                <p class="text-slate-500 text-sm mb-8 flex-grow leading-relaxed relative z-10">
+                    Turn your Google Drive or Notion into a chat-able AI expert. Instant answers for your team without hallucination.
+                </p>
+                
+                <div class="pt-6 border-t border-white/5 relative z-10">
+                    <div class="flex items-end gap-2 mb-4 opacity-50">
+                        <span class="text-3xl font-display font-bold text-slate-400">$299</span>
+                        <span class="text-xs text-slate-600 mb-1 uppercase tracking-wider">/ Setup</span>
+                    </div>
+                    <button disabled class="block w-full py-3 bg-slate-800/50 text-slate-500 text-center font-bold cursor-not-allowed rounded-xl border border-white/5">
+                        Join Waitlist
+                    </button>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <section class="py-20 border-y border-white/5 bg-slate-900/50 backdrop-blur-sm">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-                <div class="text-4xl md:text-5xl font-display font-bold text-white mb-2">24/7</div>
-                <div class="text-xs font-mono text-slate-500 uppercase tracking-widest">System Uptime</div>
-            </div>
-            <div>
-                <div class="text-4xl md:text-5xl font-display font-bold text-white mb-2">10x</div>
-                <div class="text-xs font-mono text-slate-500 uppercase tracking-widest">Efficiency</div>
-            </div>
-            <div>
-                <div class="text-4xl md:text-5xl font-display font-bold text-white mb-2">100%</div>
-                <div class="text-xs font-mono text-slate-500 uppercase tracking-widest">Privacy</div>
-            </div>
-            <div>
-                <div class="text-4xl md:text-5xl font-display font-bold text-white mb-2">0</div>
-                <div class="text-xs font-mono text-slate-500 uppercase tracking-widest">Vendor Lock-in</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="relative z-10 py-24 px-6 bg-slate-900">
-        <div class="max-w-xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="font-display text-4xl md:text-5xl font-medium mb-4">Ready to Build?</h2>
-                <p class="text-slate-400">Tell us about your manual workflows.</p>
-            </div>
-
-            <div class="glass-card p-1 rounded-2xl">
-                <div class="bg-slate-900/80 rounded-xl p-8 backdrop-blur-xl">
-                    <form id="contact-form" action="https://formspree.io/f/myzoebkz" method="POST" class="space-y-5">
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="space-y-1">
-                                <label class="text-xs font-mono text-slate-500 uppercase">Name</label>
-                                <input type="text" name="name" required class="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 transition-all placeholder:text-slate-600" placeholder="John Doe">
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-xs font-mono text-slate-500 uppercase">Email</label>
-                                <input type="email" name="email" required class="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 transition-all placeholder:text-slate-600" placeholder="john@acme.com">
-                            </div>
-                        </div>
-                        <div class="space-y-1">
-                            <label class="text-xs font-mono text-slate-500 uppercase">Challenge</label>
-                            <textarea name="message" rows="4" required class="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:border-violet-500 focus:outline-none focus:ring-1 focus:ring-violet-500 transition-all placeholder:text-slate-600" placeholder="I need to automate..."></textarea>
-                        </div>
-                        
-                        <div id="form-status" class="hidden text-center text-sm text-green-400 bg-green-500/10 py-2 rounded">
-                            Message received. We'll be in touch.
-                        </div>
-
-                        <button type="submit" class="w-full py-4 bg-gradient-to-r from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 text-white font-display font-bold uppercase tracking-wider rounded-lg shadow-lg shadow-violet-900/30 transition-all transform hover:scale-[1.02]">
-                            Initialize Transformation
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-10 border-t border-white/5 text-center text-slate-500 text-sm relative z-10 bg-slate-900">
+    <footer class="py-10 border-t border-white/5 text-center text-slate-500 text-sm relative z-10 bg-slate-900 mt-10">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="font-display font-bold text-slate-300 uppercase tracking-widest text-lg">Chalkframe</div>
             <div class="flex gap-6 font-medium">
@@ -339,23 +258,6 @@
             <div class="font-mono text-xs opacity-50">&copy; 2025 Chalkframe.</div>
         </div>
     </footer>
-
-    <div id="product-banner" class="fixed bottom-6 right-6 z-50 w-full max-w-xs transition-all duration-500 transform translate-y-0">
-        <div class="glass-card p-4 rounded-xl flex items-center gap-4 shadow-2xl relative bg-slate-900/60 border border-violet-500/30">
-            <button onclick="this.parentElement.parentElement.remove()" class="absolute -top-2 -right-2 bg-slate-800 text-slate-400 hover:text-white rounded-full p-1 border border-white/10">
-                <i class="ph-bold ph-x text-xs"></i>
-            </button>
-            <div class="bg-violet-500/20 p-2.5 rounded-lg text-violet-400 animate-pulse-slow">
-                <i class="ph-fill ph-file-text text-xl"></i>
-            </div>
-            <div>
-                <h4 class="font-display font-bold text-white text-sm">New Tool Launched</h4>
-                <a href="https://chalkframe.com/proposalflow" target="_blank" class="text-xs text-slate-300 hover:text-white flex items-center gap-1 transition-colors mt-0.5">
-                    ProposalFlow AI <i class="ph-bold ph-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </div>
 
     <script>
         // Mobile Menu Logic
@@ -376,28 +278,7 @@
         btn.addEventListener('click', toggleMenu);
         closeBtn.addEventListener('click', toggleMenu);
         links.forEach(link => link.addEventListener('click', toggleMenu));
-
-        // Form Logic
-        var form = document.getElementById("contact-form");
-        async function handleSubmit(event) {
-            event.preventDefault();
-            var status = document.getElementById("form-status");
-            var data = new FormData(event.target);
-            fetch(event.target.action, {
-                method: form.method,
-                body: data,
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                if (response.ok) {
-                    status.classList.remove("hidden");
-                    form.reset();
-                    setTimeout(() => status.classList.add("hidden"), 5000);
-                } else {
-                    alert("Error submitting form.");
-                }
-            }).catch(error => alert("Error submitting form."));
-        }
-        form.addEventListener("submit", handleSubmit);
     </script>
+
 </body>
 </html>
