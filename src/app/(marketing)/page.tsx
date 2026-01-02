@@ -47,7 +47,7 @@ export default function Home() {
           </h1>
           <p className="text-slate-200 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed drop-shadow-md">
             Chalkframe bridges the gap between manual workflows and automated
-            engines of growth. Don't just adapt to AI—build your frame around
+            engines of growth. Don't just adapt to AI - build your frame around
             it.
           </p>
           <div className="w-full max-w-lg mx-auto relative group">
