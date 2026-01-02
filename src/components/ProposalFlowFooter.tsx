@@ -18,13 +18,13 @@ export default function ProposalFlowFooter() {
 
                     <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-sm text-slate-400">
                         <Link
-                            href="https://proposalflow.chalkframe.com/privacy"
+                            href="/privacy"
                             className="hover:text-white transition-colors"
                         >
                             Privacy
                         </Link>
                         <Link
-                            href="https://proposalflow.chalkframe.com/terms"
+                            href="/terms"
                             className="hover:text-white transition-colors"
                         >
                             Terms
