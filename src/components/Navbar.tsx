@@ -94,8 +94,8 @@ export default function Navbar() {
                     >
                         <Sparkle weight="bold" /> New
                     </Link>
-                    <Link href="/#about" className="hover:text-white transition-colors">
-                        Philosophy
+                    <Link href="/products" className="hover:text-white transition-colors">
+                        Products
                     </Link>
                 </div>
 
@@ -135,11 +135,11 @@ export default function Navbar() {
                     Services
                 </Link>
                 <Link
-                    href="/#about"
+                    href="/products"
                     onClick={toggleMenu}
                     className="text-2xl font-display font-light text-white mobile-link"
                 >
-                    About
+                    Products
                 </Link>
                 <Link
                     href="/#contact"

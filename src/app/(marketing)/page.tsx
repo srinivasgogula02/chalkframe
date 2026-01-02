@@ -22,7 +22,7 @@ export default function Home() {
       <section className="relative min-h-screen flex flex-col justify-start md:justify-center items-center px-6 pt-32 md:pt-20 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://blogger.googleusercontent.com/img/a/AVvXsEjJmY5bFAHqBJ8a0AreVUiUgNSAlsZWpvJuxL-OASBhHo2qZIr5HVNem37S0IhcnGuP5kDUg1NBRPipHkGYAqg7QwSUyn5qAn5f-2vNQHFeYZb0tRK-ZxVCUJDgQdVZb5CGBWKvEM5blOn20WgQdUSmEnwSLzCNSLFl2R_JVSxRkORgaZ6LdWxjtSom-gg"
+            src="https://blogger.googleusercontent.com/img/a/AVvXsEhK0rCLsQqUiQIyksUesn8YmqGHLUyn302-3BR_2ub7hTOHY6sqbjcqPG7CCD8NT2F6wx8vky_bTTYUzga8IIIm5pWp4_icdJ7HfC5DJofy9g6dZUBW3VZb-40jzZwM61u8KzL-GMI7G14B1C3SDXnvAEIoJK9j0552kbFmWrwFmXhvllLIpiNP5w2PM-E"
             alt="Background"
             fill
             className="object-cover opacity-90"
@@ -130,7 +130,7 @@ export default function Home() {
               </div>
 
               <div className="w-full lg:w-1/2">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="bg-slate-800/50 border border-white/5 p-5 rounded-2xl hover:bg-slate-800 transition-colors">
                     <div className="text-violet-400 mb-3 text-2xl">
                       <Brain weight="duotone" />
