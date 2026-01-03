@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -17,6 +18,24 @@ import ProductBanner from "@/components/ProductBanner";
 import HeroBackground from "@/assets/hero-background.png";
 import ElevateboxLogo from "@/assets/logo-elevatebox.png";
 import NuestLogo from "@/assets/logo-nuest.png";
+
+export const metadata: Metadata = {
+  title: "Chalkframe | AI Transformation Consultancy",
+  description: "Chalkframe bridges the gap between manual workflows and automated engines of growth. Don't just adapt to AI - build your frame around it.",
+  openGraph: {
+    title: "Chalkframe | AI Transformation Consultancy",
+    description: "Chalkframe bridges the gap between manual workflows and automated engines of growth. Don't just adapt to AI - build your frame around it.",
+    url: "https://chalkframe.com",
+    siteName: "Chalkframe",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chalkframe | AI Transformation Consultancy",
+    description: "Chalkframe bridges the gap between manual workflows and automated engines of growth.",
+  },
+};
 
 export default function Home() {
   return (
