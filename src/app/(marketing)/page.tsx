@@ -14,6 +14,9 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import ContactForm from "@/components/ContactForm";
 import ProductBanner from "@/components/ProductBanner";
+import HeroBackground from "@/assets/hero-background.png";
+import ElevateboxLogo from "@/assets/logo-elevatebox.png";
+import NuestLogo from "@/assets/logo-nuest.png";
 
 export default function Home() {
   return (
@@ -22,11 +25,13 @@ export default function Home() {
       <section className="relative min-h-screen flex flex-col justify-start md:justify-center items-center px-6 pt-32 md:pt-20 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://blogger.googleusercontent.com/img/a/AVvXsEhK0rCLsQqUiQIyksUesn8YmqGHLUyn302-3BR_2ub7hTOHY6sqbjcqPG7CCD8NT2F6wx8vky_bTTYUzga8IIIm5pWp4_icdJ7HfC5DJofy9g6dZUBW3VZb-40jzZwM61u8KzL-GMI7G14B1C3SDXnvAEIoJK9j0552kbFmWrwFmXhvllLIpiNP5w2PM-E"
+            src={HeroBackground}
             alt="Background"
             fill
             className="object-cover opacity-90"
             priority
+            placeholder="blur"
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/40 to-slate-900"></div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent to-slate-900/80"></div>
@@ -71,17 +76,17 @@ export default function Home() {
             </p>
             <div className="flex justify-center items-center gap-8">
               <a href="https://elevatebox.in" target="_blank">
-                <img
-                  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuaj_jIxHSabRg_VR2iE5C67X8knA2jE_Oukvzw90QNSabgBEl2AkhMm68cQdVWQSYhqKel0SAKe-VpwyuBXL4yBdw6UeEvNKHcJtCM4ahutvr126UzPjIK6AzXNRzVuzntUZDUtoQWECz_MPnI_rR27-RNyW9IZNfKd1Z8kRX7LFyMCU83jHa5b8HmY4/s320/Gemini_Generated_Image_nzgr55nzgr55nzgr-removebg-preview.png"
+                <Image
+                  src={ElevateboxLogo}
                   alt="Elevatebox"
-                  className="h-8 brightness-0 invert"
+                  className="h-8 w-auto brightness-0 invert"
                 />
               </a>
               <a href="https://nuest.co.in" target="_blank">
-                <img
-                  src="https://blogger.googleusercontent.com/img/a/AVvXsEjWR-Z4cSo5skEpMY7q1Bzu7t8V2NrAXGqs0vi60tBYA0-5ziSebSexoeiWAWiFqjANeekstIOR_c7VuuUrdhIgQZfkAnPqae9TdotWOeWZBU0afzd50wCUUTFh_gghOyy_J7_WlhWfVe6Uu28GRUBOBNcypImPa3KIKtFB2YNwrKXdB1vhgV5dxJlv2R8"
+                <Image
+                  src={NuestLogo}
                   alt="Partner"
-                  className="h-10 brightness-0 invert"
+                  className="h-10 w-auto brightness-0 invert"
                 />
               </a>
             </div>
