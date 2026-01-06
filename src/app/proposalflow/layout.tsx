@@ -4,7 +4,32 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "ProposalFlow | AI Proposal Generator",
-    description: "Stop Writing Proposals. Start Closing Deals.",
+    description: "Stop Writing Proposals. Start Closing Deals. Generate, design, and brand high-converting proposals in under 30 seconds with AI.",
+    alternates: {
+        canonical: "https://chalkframe.com/proposalflow",
+    },
+    openGraph: {
+        title: "ProposalFlow | AI Proposal Generator",
+        description: "Stop Writing Proposals. Start Closing Deals. Generate high-converting proposals in under 30 seconds.",
+        url: "https://chalkframe.com/proposalflow",
+        siteName: "Chalkframe",
+        type: "website",
+        images: [
+            {
+                url: "/og-image.jpg",
+                width: 1200,
+                height: 630,
+                alt: "ProposalFlow - AI Proposal Generator",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "ProposalFlow | AI Proposal Generator",
+        description: "Stop Writing Proposals. Start Closing Deals.",
+        images: ["/og-image.jpg"],
+        creator: "@chalkframe",
+    },
 };
 
 export default function ProposalFlowLayout({
