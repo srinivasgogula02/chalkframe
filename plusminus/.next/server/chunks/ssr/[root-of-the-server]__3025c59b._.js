@@ -1,0 +1,3 @@
+module.exports=[81940,a=>{a.v({className:"patrick_hand_57d3be37-module__EK4SjG__className",variable:"patrick_hand_57d3be37-module__EK4SjG__variable"})},27572,a=>{"use strict";var b=a.i(7997),c=a.i(81940);let d={className:c.default.className,style:{fontFamily:"'Patrick Hand', 'Patrick Hand Fallback'",fontWeight:400,fontStyle:"normal"}};function e({children:a}){return(0,b.jsx)("html",{lang:"en",children:(0,b.jsx)("body",{className:`${d.variable} antialiased font-[family-name:var(--font-patrick-hand)] bg-[#fafafa] text-[#2d2d2d]`,children:a})})}null!=c.default.variable&&(d.variable=c.default.variable),a.s(["default",()=>e,"metadata",0,{title:"plusMinus",description:"Track your life's progress."}],27572)}];
+
+//# sourceMappingURL=%5Broot-of-the-server%5D__3025c59b._.js.map

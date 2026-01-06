@@ -22,8 +22,8 @@ export default function Hero() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 className="relative z-10 max-w-4xl"
             >
-                <span className="mb-4 inline-block tag bg-yellow-100 text-[#2d2d2d] font-bold rotate-[-2deg]">
-                    Start Tracking Today
+                <span className="mb-4 inline-block px-4 py-2 bg-yellow-100 text-[#2d2d2d] font-bold rotate-[-2deg] border-2 border-[#2d2d2d] rounded-lg shadow-sm">
+                    🚀 Launch Offer: First 100 users get lifetime free access — <strong>32 left!</strong>
                 </span>
                 <h1 className="mb-6 text-5xl font-bold tracking-tight text-[#2d2d2d] sm:text-7xl drop-shadow-sm">
                     Build Better <span className="relative inline-block">Habits<svg className="absolute -bottom-2 w-full h-3 text-blue-300 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" /></svg></span>
@@ -35,7 +35,7 @@ export default function Hero() {
 
                 <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                     <Link
-                        href="https://app.plusminus.com"
+                        href="https://plusminus.chalkframe.com"
                         className="btn-scribble hover:scale-105 active:scale-95 transition-transform"
                     >
                         Start for Free
