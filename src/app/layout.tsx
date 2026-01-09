@@ -14,7 +14,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://chalkframe.com"),
+  metadataBase: new URL("https://www.chalkframe.com"),
   title: {
     default: "Chalkframe | AI Transformation Consultancy",
     template: "%s | Chalkframe",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://chalkframe.com",
+    url: "https://www.chalkframe.com",
     siteName: "Chalkframe",
     title: "Chalkframe | AI Transformation Consultancy",
     description: "Chalkframe bridges the gap between business strategy and AI. Solving your most complex challenges with manual workflows and automated engines of growth.",

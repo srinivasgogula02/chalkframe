@@ -6,12 +6,12 @@ export const metadata: Metadata = {
     title: "ProposalFlow | AI Proposal Generator",
     description: "Stop Writing Proposals. Start Closing Deals. Generate, design, and brand high-converting proposals in under 30 seconds with AI.",
     alternates: {
-        canonical: "https://chalkframe.com/proposalflow",
+        canonical: "https://www.chalkframe.com/proposalflow",
     },
     openGraph: {
         title: "ProposalFlow | AI Proposal Generator",
         description: "Stop Writing Proposals. Start Closing Deals. Generate high-converting proposals in under 30 seconds.",
-        url: "https://chalkframe.com/proposalflow",
+        url: "https://www.chalkframe.com/proposalflow",
         siteName: "Chalkframe",
         type: "website",
         images: [

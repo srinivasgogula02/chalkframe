@@ -12,12 +12,12 @@ export const metadata: Metadata = {
     title: "plusMinus | Build Better Habits",
     description: "A simple, distraction-free tracker for your daily goals. Stop guessing and start measuring your progress.",
     alternates: {
-        canonical: "https://chalkframe.com/plusminus",
+        canonical: "https://www.chalkframe.com/plusminus",
     },
     openGraph: {
         title: "plusMinus | Build Better Habits",
         description: "A simple, distraction-free tracker for your daily goals. Measure your progress.",
-        url: "https://chalkframe.com/plusminus",
+        url: "https://www.chalkframe.com/plusminus",
         siteName: "Chalkframe",
         type: "website",
         images: [

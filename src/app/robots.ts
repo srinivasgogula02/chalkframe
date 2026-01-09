@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://chalkframe.com/sitemap.xml',
+        sitemap: 'https://www.chalkframe.com/sitemap.xml',
     }
 }

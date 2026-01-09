@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   title: "Chalkframe | AI Transformation Consultancy",
   description: "Chalkframe bridges the gap between manual workflows and automated engines of growth. Don't just adapt to AI - build your frame around it.",
   alternates: {
-    canonical: "https://chalkframe.com",
+    canonical: "https://www.chalkframe.com",
   },
   openGraph: {
     title: "Chalkframe | AI Transformation Consultancy",
     description: "Chalkframe bridges the gap between manual workflows and automated engines of growth. Don't just adapt to AI - build your frame around it.",
-    url: "https://chalkframe.com",
+    url: "https://www.chalkframe.com",
     siteName: "Chalkframe",
     locale: "en_US",
     type: "website",
