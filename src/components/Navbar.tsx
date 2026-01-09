@@ -97,6 +97,9 @@ export default function Navbar() {
                     <Link href="/products" className="hover:text-white transition-colors">
                         Products
                     </Link>
+                    <Link href="https://blog.chalkframe.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                        Blog
+                    </Link>
                 </div>
 
                 <div className="flex items-center gap-3">
@@ -115,7 +118,6 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            {/* Mobile Menu */}
             <div
                 className={`fixed inset-0 z-40 bg-slate-900/95 backdrop-blur-xl transform transition-transform duration-300 flex flex-col items-center justify-center space-y-8 ${isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
                     }`}
@@ -140,6 +142,15 @@ export default function Navbar() {
                     className="text-2xl font-display font-light text-white mobile-link"
                 >
                     Products
+                </Link>
+                <Link
+                    href="https://blog.chalkframe.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={toggleMenu}
+                    className="text-2xl font-display font-light text-white mobile-link"
+                >
+                    Blog
                 </Link>
                 <Link
                     href="/#contact"
