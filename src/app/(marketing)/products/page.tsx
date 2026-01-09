@@ -13,9 +13,19 @@ import ProductsBackground from "@/assets/products-background.png";
 export const metadata: Metadata = {
     title: "Products | Chalkframe",
     description:
-        "A suite of automated tools and products designed to solve specific business problems with zero overhead.",
+        "A suite of automated AI tools and products designed to solve specific business problems with zero overhead. ProposalFlow, Forever Blog, and more.",
+    keywords: [
+        "AI Products",
+        "ProposalFlow",
+        "AI Proposal Generator",
+        "Forever Blog",
+        "Business Automation Tools",
+        "AI Software",
+        "Automated Proposals",
+        "AI SEO Tools"
+    ],
     alternates: {
-        canonical: "/products",
+        canonical: "https://www.chalkframe.com/products",
     },
 };
 

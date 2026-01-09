@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import StructuredData from "@/components/StructuredData";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -20,9 +21,24 @@ export const metadata: Metadata = {
     template: "%s | Chalkframe",
   },
   description: "Chalkframe bridges the gap between business strategy and AI. Solving your most complex challenges with manual workflows and automated engines of growth.",
-  keywords: ["AI Consultancy", "Automation", "Workflow Automation", "AI Agents", "Business Growth"],
+  keywords: [
+    "AI Consultancy",
+    "AI Transformation",
+    "Workflow Automation",
+    "AI Agents",
+    "Business Automation",
+    "AI Proposal Generator",
+    "ProposalFlow",
+    "Habit Tracker",
+    "PlusMinus",
+    "Business Growth",
+    "AI Solutions",
+    "Automated Proposals",
+    "AI Tools for Business"
+  ],
   authors: [{ name: "Chalkframe" }],
   creator: "Chalkframe",
+  publisher: "Chalkframe",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -35,7 +51,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Chalkframe",
+        alt: "Chalkframe - AI Transformation Consultancy",
       },
     ],
   },
@@ -57,6 +73,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "your-google-site-verification-code", // TODO: Add actual verification code
+  },
 };
 
 export default function RootLayout({
@@ -69,6 +88,7 @@ export default function RootLayout({
       <body
         className={`${manrope.variable} ${spaceGrotesk.variable} font-sans bg-slate-900 text-slate-50 antialiased overflow-x-hidden selection:bg-violet-500 selection:text-white`}
       >
+        <StructuredData />
         {children}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-TK42CQKYWR"

@@ -22,6 +22,20 @@ import NuestLogo from "@/assets/logo-nuest.png";
 export const metadata: Metadata = {
   title: "Chalkframe | AI Transformation Consultancy",
   description: "Chalkframe bridges the gap between manual workflows and automated engines of growth. Don't just adapt to AI - build your frame around it.",
+  keywords: [
+    "AI Transformation",
+    "AI Consultancy",
+    "Workflow Automation",
+    "Business Automation",
+    "AI Proposal Generator",
+    "ProposalFlow",
+    "AI Tools",
+    "Automated Proposals",
+    "AI Solutions for Business",
+    "Custom AI Development",
+    "AI Agents",
+    "Programmatic SEO"
+  ],
   alternates: {
     canonical: "https://www.chalkframe.com",
   },
