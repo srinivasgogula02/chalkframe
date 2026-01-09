@@ -22,6 +22,9 @@ import NuestLogo from "@/assets/logo-nuest.png";
 export const metadata: Metadata = {
   title: "Chalkframe | AI Transformation Consultancy",
   description: "Chalkframe bridges the gap between manual workflows and automated engines of growth. Don't just adapt to AI - build your frame around it.",
+  alternates: {
+    canonical: "https://chalkframe.com",
+  },
   openGraph: {
     title: "Chalkframe | AI Transformation Consultancy",
     description: "Chalkframe bridges the gap between manual workflows and automated engines of growth. Don't just adapt to AI - build your frame around it.",
