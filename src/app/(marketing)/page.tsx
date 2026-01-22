@@ -60,7 +60,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col justify-start md:justify-center items-center px-6 pt-32 md:pt-20 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
+          {/* <Image
             src={HeroBackground}
             alt="Background"
             fill
@@ -68,9 +68,9 @@ export default function Home() {
             priority
             placeholder="blur"
             sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/40 to-slate-900"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent to-slate-900/80"></div>
+          /> */}
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/10 via-slate-900/40 to-slate-900"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-900/20 to-slate-900/80"></div>
         </div>
 
         <div className="relative z-10 max-w-5xl mx-auto mt-10 md:mt-0">
@@ -99,10 +99,10 @@ export default function Home() {
                 automate my workflow...
               </div>
               <Link
-                href="#contact"
+                href="/schedule"
                 className="bg-white text-slate-900 hover:bg-slate-200 rounded-xl px-6 py-3 font-bold text-sm transition-colors shadow-lg flex items-center gap-2"
               >
-                Let's Build <ArrowRight weight="bold" />
+                Book a Call <ArrowRight weight="bold" />
               </Link>
             </div>
           </div>
@@ -356,6 +356,6 @@ export default function Home() {
       </section>
 
       <ProductBanner />
-    </main>
+    </main >
   );
 }
