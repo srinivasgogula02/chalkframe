@@ -18,6 +18,7 @@ import ProductBanner from "@/components/ProductBanner";
 import HeroBackground from "@/assets/hero-background.png";
 import ElevateboxLogo from "@/assets/logo-elevatebox.png";
 import NuestLogo from "@/assets/logo-nuest.png";
+import InteractiveHero from "@/components/InteractiveHero";
 
 export const metadata: Metadata = {
   title: "Chalkframe | AI Transformation Consultancy",
@@ -59,19 +60,7 @@ export default function Home() {
     <main className="relative">
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col justify-start md:justify-center items-center px-6 pt-32 md:pt-20 text-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={HeroBackground}
-            alt="Background"
-            fill
-            className="object-cover opacity-30"
-            priority
-            placeholder="blur"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/30 via-slate-900/40 to-slate-900"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent to-slate-900/80"></div>
-        </div>
+        <InteractiveHero />
 
         <div className="relative z-10 max-w-5xl mx-auto mt-10 md:mt-0">
           <div className="animate-float mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-violet-200 text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-lg">
