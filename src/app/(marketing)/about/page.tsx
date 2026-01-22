@@ -111,7 +111,7 @@ export default function AboutPage() {
                                 <Users className="text-2xl text-purple-400" weight="fill" />
                             </div>
                             <h3 className="font-display text-xl font-medium text-white mb-2">
-                                Programmatic SEO
+                                Generative Engine Optimization (GEO)
                             </h3>
                             <p className="text-slate-400 text-sm leading-relaxed">
                                 Data-driven content strategies and automated page generation to dominate search rankings.

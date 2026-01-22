@@ -155,7 +155,7 @@ export default function ProductsPage() {
                             AI SEO Autopilot
                         </h3>
                         <p className="text-slate-500 text-sm mb-8 flex-grow leading-relaxed relative z-10">
-                            Automated programmatic SEO engine. Generate 1,000+ landing pages
+                            Automated Generative Engine Optimization (GEO) engine. Generate 1,000+ landing pages
                             based on your niche keywords automatically.
                         </p>
 

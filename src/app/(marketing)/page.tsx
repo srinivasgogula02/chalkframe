@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     "AI Solutions for Business",
     "Custom AI Development",
     "AI Agents",
-    "Programmatic SEO"
+    "Generative Engine Optimization (GEO)"
   ],
   alternates: {
     canonical: "https://www.chalkframe.com",
@@ -290,7 +290,7 @@ export default function Home() {
             <div className="glass-card rounded-3xl p-8 group hover:bg-white/5 transition-all">
               <TrendUp className="text-4xl text-green-400 mb-4" weight="duotone" />
               <h3 className="font-display text-xl text-white mb-2">
-                Programmatic SEO
+                Generative Engine Optimization (GEO)
               </h3>
               <p className="text-slate-400 text-sm">
                 Dominate rankings with data-driven content strategies and
