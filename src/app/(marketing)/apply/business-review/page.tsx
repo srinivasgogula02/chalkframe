@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -10,6 +11,31 @@ export default function BusinessReviewPage() {
     return (
         <div className="min-h-screen font-sans selection:bg-violet-500 selection:text-white">
             <div className="max-w-[880px] mx-auto px-5 py-12 pt-32 pb-32">
+                {/* Topbar */}
+                <div className="flex items-center justify-between mb-16">
+                    <Link
+                        href="https://www.linkedin.com/in/srinivasgogula"
+                        target="_blank"
+                        className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+                    >
+                        <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_1DAGT8lFdrae7T-VZPHDfWPgiVj2nq6xCw&s"
+                            alt="Srinivas Gogula"
+                            className="w-11 h-11 rounded-full border border-slate-700 shadow-lg object-cover"
+                        />
+                        <div>
+                            <div className="text-sm font-semibold text-slate-200">Srinivas Gogula</div>
+                            <div className="text-xs text-slate-400">Chalk Frame</div>
+                        </div>
+                    </Link>
+
+                    <a
+                        href="#apply"
+                        className="bg-white text-slate-900 px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-slate-200 transition-colors"
+                    >
+                        Apply for Free Review →
+                    </a>
+                </div>
 
                 {/* Hero */}
                 <h1 className="font-display text-4xl md:text-[44px] leading-[1.2] mb-5 max-w-[720px] text-white">
