@@ -36,14 +36,16 @@
     <style>
         .bg-grid { background-size: 40px 40px; mask-image: linear-gradient(to bottom, transparent, 5%, black, 95%, transparent); }
         .glass-card { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-50 font-sans antialiased overflow-x-hidden">
+<body class="bg-slate-900 text-slate-50 font-sans antialiased overflow-x-hidden selection:bg-violet-500 selection:text-white">
 
     <!-- Background Grid -->
     <div class="fixed inset-0 bg-grid-pattern bg-grid opacity-[0.15] pointer-events-none z-0"></div>
 
-    <!-- Navigation (Simplified) -->
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 top-0 border-b border-white/5 bg-slate-900/90 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-2 group">
@@ -52,7 +54,9 @@
                 </div>
                 <span class="font-display font-bold text-xl tracking-wide uppercase">Chalkframe</span>
             </a>
-            <a href="index.html" class="text-sm text-slate-400 hover:text-white transition-colors">Back to Consultancy <i class="ph ph-arrow-right"></i></a>
+            <a href="index.html" class="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2">
+                Back to Consultancy <i class="ph ph-arrow-right"></i>
+            </a>
         </div>
     </nav>
 
@@ -77,13 +81,13 @@
                 </a>
             </div>
             
-            <!-- VISUAL: Browser Mockup (Code-based Image) -->
-            <div class="relative max-w-4xl mx-auto perspective-1000 group">
+            <!-- VISUAL: Browser Mockup (Dark Mode) -->
+            <div class="relative max-w-4xl mx-auto perspective-1000 group animate-float">
                 <!-- Glow effect -->
                 <div class="absolute -inset-1 bg-gradient-to-r from-violet-600 to-gold-400 rounded-xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-700"></div>
                 
                 <!-- Browser Frame -->
-                <div class="relative rounded-xl bg-slate-900 border border-slate-700 shadow-2xl overflow-hidden text-left transform transition-transform duration-700 hover:-translate-y-2">
+                <div class="relative rounded-xl bg-slate-900 border border-slate-700 shadow-2xl overflow-hidden text-left">
                     <!-- Toolbar -->
                     <div class="h-10 bg-slate-800 border-b border-slate-700 flex items-center px-4 gap-2">
                         <div class="flex gap-2">
@@ -93,11 +97,11 @@
                         </div>
                         <div class="ml-4 flex-1 max-w-md bg-slate-900 h-6 rounded-md border border-slate-700 flex items-center px-3 text-[10px] text-slate-500 font-mono justify-between">
                             <span>blog.yourstartup.com</span>
-                            <i class="ph-fill ph-lock-key"></i>
+                            <i class="ph-fill ph-lock-key text-green-400"></i>
                         </div>
                     </div>
                     
-                    <!-- Content Preview (Simulated Blog) -->
+                    <!-- Content Preview -->
                     <div class="p-8 bg-slate-900 grid md:grid-cols-3 gap-8">
                         <div class="md:col-span-2 space-y-6">
                             <!-- Fake Post Title -->
@@ -174,7 +178,7 @@
                     <div class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-2">5-Year Cost of Ownership</div>
                     <div class="flex items-end justify-center gap-2">
                         <span class="text-5xl font-display font-bold text-white">$0</span>
-                        <span class="text-slate-400 mb-2">vs $1,200+</span>
+                        <span class="text-slate-400 mb-2 decoration-red-500 line-through">vs $1,200+</span>
                     </div>
                 </div>
                 <div class="space-y-3">
@@ -199,14 +203,14 @@
     <!-- The Solution (How it works) -->
     <section class="relative z-10 py-24 bg-slate-800/30 border-y border-white/5">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
+            <div class="text-center mb-16">
                 <h2 class="font-display text-3xl font-bold mb-4">The "Infrastructure Hack"</h2>
                 <p class="text-slate-300 max-w-2xl mx-auto">
                     We utilize Google's enterprise-grade infrastructure (Blogger) as a headless CMS, wrapped in a custom-coded skin that mimics your startup's design language.
                 </p>
             </div>
 
-            <!-- VISUAL: Architecture Diagram -->
+            <!-- VISUAL: Architecture Diagram (Dark Mode) -->
             <div class="mb-16 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 py-8">
                 <!-- Step 1 -->
                 <div class="flex flex-col items-center text-center group">
@@ -241,7 +245,6 @@
                 </div>
             </div>
 
-            <!-- Explainer Grid -->
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="p-6 border border-slate-700 bg-slate-900/50">
                     <div class="w-10 h-10 bg-violet-900/30 text-violet-400 flex items-center justify-center mb-4 rounded">
@@ -288,14 +291,21 @@
                 <li class="flex gap-3"><i class="ph-fill ph-check text-violet-500"></i> <strong>$0 Monthly Hosting Forever</strong></li>
             </ul>
 
-            <form action="https://formspree.io/f/myzoebkz" method="POST" class="space-y-4 max-w-sm mx-auto">
+            <!-- FIX: Added ID 'launch-form' and Success Message Div -->
+            <form id="launch-form" action="https://formspree.io/f/xnnwglqo" method="POST" class="space-y-4 max-w-sm mx-auto">
                 <input type="hidden" name="product" value="Startup Blog Package">
-                <input type="email" name="email" required placeholder="Enter your email address" class="w-full bg-slate-900 border border-slate-700 text-white px-4 py-3 rounded focus:outline-none focus:border-violet-500">
+                <input type="email" name="email" required placeholder="Enter your email address" class="w-full bg-slate-900 border border-slate-700 text-white px-4 py-3 rounded focus:outline-none focus:border-violet-500 transition-colors">
+                
+                <!-- Success Message Container -->
+                <div id="form-status" class="hidden p-3 text-sm text-green-400 bg-green-900/20 border border-green-500/30 rounded mb-4">
+                    Thanks! We'll be in touch shortly.
+                </div>
+                
                 <button type="submit" class="w-full py-4 bg-violet-600 hover:bg-violet-500 text-white font-display font-bold uppercase tracking-wide transition-all shadow-lg">
                     Start Building
                 </button>
             </form>
-            <p class="mt-4 text-xs text-slate-500">Delivery in 48-72 Hours.</p>
+            <p class="mt-4 text-xs text-slate-500 font-mono">Delivery in 48-72 Hours.</p>
         </div>
     </section>
 
@@ -307,5 +317,49 @@
         </div>
     </footer>
 
+    <!-- JavaScript -->
+    <script>
+        // Form Handling (Fixed to target 'launch-form')
+        var form = document.getElementById("launch-form");
+        if (form) {
+            async function handleSubmit(event) {
+                event.preventDefault();
+                var status = document.getElementById("form-status");
+                var data = new FormData(event.target);
+                
+                if(form.action.includes("INSERT_YOUR_FORMSPREE_ID_HERE")) {
+                    alert("Please add your Formspree ID in the HTML code to make this form work!");
+                    return;
+                }
+
+                fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        if (status) {
+                            status.classList.remove("hidden");
+                            setTimeout(() => status.classList.add("hidden"), 5000);
+                        }
+                        form.reset();
+                    } else {
+                        response.json().then(data => {
+                            if (Object.hasOwn(data, 'errors')) {
+                                alert(data["errors"].map(error => error["message"]).join(", "));
+                            } else {
+                                alert("Oops! There was a problem submitting your form");
+                            }
+                        })
+                    }
+                }).catch(error => {
+                    alert("Oops! There was a problem submitting your form");
+                });
+            }
+            form.addEventListener("submit", handleSubmit);
+        }
+    </script>
 </body>
 </html>
