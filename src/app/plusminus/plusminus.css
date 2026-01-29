@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@theme {
+    --font-patrick-hand: var(--font-patrick-hand);
+}
+
+.plusminus-wrapper {
+    --background: #fafafa;
+    --foreground: #2d2d2d;
+    font-family: var(--font-patrick-hand), cursive;
+    -webkit-font-smoothing: antialiased;
+    background: var(--background);
+    color: var(--foreground);
+}
+
+/* The Aesthetic "Scribble" Card */
+.plusminus-wrapper .card {
+    background: white;
+    border: 2px solid #2d2d2d;
+    border-radius: 2px 20px 3px 15px / 20px 3px 15px 5px;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.plusminus-wrapper .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Highlight Card (For Stats) */
+.plusminus-wrapper .card-highlight {
+    border: 3px solid #2d2d2d;
+    box-shadow: 6px 6px 0px #fde047;
+    /* Yellow Shadow */
+    position: relative;
+}
+
+.plusminus-wrapper .card-highlight::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    /* Tape effect */
+    z-index: 10;
+}
+
+/* Goals specific styling */
+.plusminus-wrapper .goal-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px dashed #e5e7eb;
+}
+
+.plusminus-wrapper .goal-checkbox {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #2d2d2d;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+}
+
+.plusminus-wrapper .goal-checkbox:checked {
+    background: #2d2d2d;
+}
+
+.plusminus-wrapper .goal-checkbox:checked::after {
+    content: "✔";
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+}
+
+/* Scribble Progress Bar */
+.plusminus-wrapper .scribble-progress {
+    background: repeating-linear-gradient(45deg,
+            #2d2d2d,
+            #2d2d2d 10px,
+            #ffffff 10px,
+            #ffffff 20px);
+    border-radius: 10px;
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+/* Button Styling */
+.plusminus-wrapper .btn-scribble {
+    background: #2d2d2d;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    font-size: 1.1rem;
+    transition: all 0.1s;
+    cursor: pointer;
+    user-select: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.plusminus-wrapper .btn-scribble:active {
+    transform: scale(0.95);
+    background: #000;
+}
+
+.plusminus-wrapper .btn-outline {
+    background: transparent;
+    color: #2d2d2d;
+    border: 2px solid #2d2d2d;
+    padding: 6px 14px;
+    border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.plusminus-wrapper .btn-outline:hover {
+    background: #f3f4f6;
+}
+
+.plusminus-wrapper .grid-squares {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    justify-content: center;
+}
+
+.plusminus-wrapper .day-sq {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
