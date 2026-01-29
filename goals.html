@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Valley of Focus - Botany Update</title>
+    <title>Valley of Focus - Alive</title>
     <style>
         :root { 
             --primary: #2E7D32; 
@@ -20,7 +20,7 @@
         
         canvas { display: block; outline: none; }
 
-        /* --- QUICK ACTION FAB (Bottom Center) --- */
+        /* --- QUICK ACTION FAB --- */
         #fab-add {
             position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
             width: 60px; height: 60px;
@@ -28,10 +28,10 @@
             border-radius: 50%; border: none;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             font-size: 2rem; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 95; transition: transform 0.2s, background 0.2s;
+            cursor: pointer; z-index: 95; transition: transform 0.2s;
         }
-        #fab-add:active { transform: translateX(-50%) scale(0.9); background: #1B5E20; }
-        #fab-add span { margin-top: -4px; } /* Optical alignment */
+        #fab-add:active { transform: translateX(-50%) scale(0.9); }
+        #fab-add span { margin-top: -4px; }
 
         /* --- SIDEBAR --- */
         #sidebar {
@@ -44,7 +44,6 @@
         }
         #sidebar.open { transform: translateX(0); }
         
-        /* Header & Close Button */
         .sb-header { 
             padding: 20px; border-bottom: 1px solid #eee; 
             display: flex; justify-content: space-between; align-items: center;
@@ -55,7 +54,6 @@
             cursor: pointer; padding: 0 10px; line-height: 1;
         }
 
-        /* Tabs */
         .tabs { display: flex; border-bottom: 1px solid #eee; background: rgba(0,0,0,0.02); }
         .tab { 
             flex: 1; padding: 15px 0; border: none; background: none; 
@@ -66,18 +64,14 @@
             content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--primary);
         }
 
-        /* List */
         #goal-list { flex: 1; overflow-y: auto; padding: 15px; }
         
         .goal-item {
             background: white; border-radius: 12px; padding: 15px; margin-bottom: 10px;
             border: 1px solid #eee; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: border 0.2s;
         }
         .goal-item.active { border-left: 5px solid var(--primary); }
-        .goal-item.dead { border-left: 5px solid var(--danger); opacity: 0.7; }
-        .goal-item.completed { border-left: 5px solid gold; background: #fffde7; }
-
+        
         .gi-top { display: flex; justify-content: space-between; margin-bottom: 10px; }
         .gi-name { font-weight: bold; font-size: 1.1rem; }
         .gi-days { font-size: 0.9rem; color: #666; background: #f0f0f0; padding: 2px 8px; border-radius: 10px; }
@@ -87,7 +81,7 @@
         .btn-yes { background: #E8F5E9; color: var(--primary); }
         .btn-no { background: #FFEBEE; color: var(--danger); }
 
-        /* --- MODAL FOR NEW PLANT --- */
+        /* --- MODAL --- */
         #add-modal {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.5); z-index: 200;
@@ -95,34 +89,22 @@
             opacity: 0; pointer-events: none; transition: opacity 0.2s;
         }
         #add-modal.show { opacity: 1; pointer-events: all; }
-        
         .modal-content {
             background: white; width: 85%; max-width: 320px;
-            padding: 25px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            padding: 25px; border-radius: 20px;
             transform: scale(0.9); transition: transform 0.2s;
         }
         #add-modal.show .modal-content { transform: scale(1); }
-        
-        input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 1rem; }
-        .btn-plant { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem; }
+        input { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .btn-plant { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: bold; }
         .btn-cancel { width: 100%; padding: 10px; background: none; color: #666; border: none; margin-top: 10px; }
 
-        /* --- AUDIO TOGGLE --- */
-        #sound-toggle {
-            position: absolute; top: 20px; right: 20px;
-            background: white; padding: 8px 12px; border-radius: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); cursor: pointer;
-            z-index: 90; font-size: 0.9rem; font-weight: 600;
-        }
-        
-        /* --- SIDEBAR TOGGLE (Desktop) --- */
         #desktop-menu {
             position: absolute; top: 20px; left: 20px;
             background: white; padding: 10px; border-radius: 50%;
             width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1); cursor: pointer; z-index: 90; font-size: 1.2rem;
         }
-
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
@@ -132,9 +114,6 @@
 <body>
 
     <div id="desktop-menu">☰</div>
-    
-    <div id="sound-toggle">🔇 Audio</div>
-
     <button id="fab-add"><span>+</span></button>
 
     <div id="sidebar">
@@ -145,7 +124,6 @@
         <div class="tabs">
             <button class="tab active" onclick="App.switchTab('active')">Active</button>
             <button class="tab" onclick="App.switchTab('dead')">Graveyard</button>
-            <button class="tab" onclick="App.switchTab('completed')">Eternal</button>
         </div>
         <div id="goal-list"></div>
     </div>
@@ -153,70 +131,71 @@
     <div id="add-modal">
         <div class="modal-content">
             <h3 style="margin-top:0">Plant New Goal</h3>
-            <input type="text" id="m-name" placeholder="Goal Name (e.g. Reading)">
-            <input type="number" id="m-days" placeholder="Days (e.g. 30)" value="30">
+            <input type="text" id="m-name" placeholder="Goal Name">
+            <input type="number" id="m-days" placeholder="Days" value="30">
             <button class="btn-plant" id="btn-modal-add">Plant Tree</button>
             <button class="btn-cancel" id="btn-modal-close">Cancel</button>
         </div>
     </div>
 
     <script>
-        // --- 1. AUDIO ENGINE (Calm) ---
+        // --- 1. AUDIO ENGINE (With Magic Sound) ---
         const AudioEngine = {
-            ctx: null, master: null, wind: null,
+            ctx: null, master: null,
             init: function() {
                 const AC = window.AudioContext || window.webkitAudioContext;
                 this.ctx = new AC();
                 this.master = this.ctx.createGain();
-                this.master.gain.value = 0;
                 this.master.connect(this.ctx.destination);
                 
                 // Wind
                 const buf = this.ctx.createBuffer(1, this.ctx.sampleRate*2, this.ctx.sampleRate);
                 const data = buf.getChannelData(0);
-                for(let i=0; i<data.length; i++) data[i] = (Math.random()*2-1) * 0.5;
-                
-                const src = this.ctx.createBufferSource();
-                src.buffer = buf; src.loop = true;
-                const filter = this.ctx.createBiquadFilter();
-                filter.type = 'lowpass'; filter.frequency.value = 300;
-                const wGain = this.ctx.createGain();
-                wGain.gain.value = 0.08;
-                
-                src.connect(filter); filter.connect(wGain); wGain.connect(this.master);
+                for(let i=0; i<data.length; i++) data[i] = (Math.random()*2-1)*0.5;
+                const src = this.ctx.createBufferSource(); src.buffer = buf; src.loop = true;
+                const f = this.ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 300;
+                const g = this.ctx.createGain(); g.gain.value = 0.05;
+                src.connect(f); f.connect(g); g.connect(this.master);
                 src.start();
-                this.loop();
             },
-            toggle: function() {
+            playMagic: function() {
                 if(!this.ctx) this.init();
                 if(this.ctx.state === 'suspended') this.ctx.resume();
-                const now = this.ctx.currentTime;
-                const vol = this.master.gain.value > 0 ? 0 : 1;
-                this.master.gain.setTargetAtTime(vol, now, 0.5);
-                document.getElementById('sound-toggle').innerText = vol > 0 ? "🔊 Audio" : "🔇 Audio";
-            },
-            loop: function() {
-                if(this.master.gain.value > 0 && Math.random() > 0.995) this.chirp();
-                requestAnimationFrame(() => this.loop());
-            },
-            chirp: function() {
+                
                 const t = this.ctx.currentTime;
+                // High glimmer sound
                 const osc = this.ctx.createOscillator();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(500, t);
+                osc.frequency.exponentialRampToValueAtTime(1200, t+0.5);
+                
                 const g = this.ctx.createGain();
-                osc.connect(g); g.connect(this.master);
-                osc.frequency.setValueAtTime(2000 + Math.random()*1000, t);
-                osc.frequency.exponentialRampToValueAtTime(1000, t+0.15);
                 g.gain.setValueAtTime(0, t);
-                g.gain.linearRampToValueAtTime(0.05, t+0.01);
-                g.gain.exponentialRampToValueAtTime(0.001, t+0.15);
-                osc.start(t); osc.stop(t+0.15);
+                g.gain.linearRampToValueAtTime(0.3, t+0.1);
+                g.gain.exponentialRampToValueAtTime(0.01, t+1.5);
+                
+                osc.connect(g); g.connect(this.master);
+                osc.start(t); osc.stop(t+1.5);
+
+                // Lower harmonic
+                const osc2 = this.ctx.createOscillator();
+                osc2.type = 'triangle';
+                osc2.frequency.setValueAtTime(250, t);
+                osc2.frequency.linearRampToValueAtTime(300, t+1);
+                const g2 = this.ctx.createGain();
+                g2.gain.setValueAtTime(0, t);
+                g2.gain.linearRampToValueAtTime(0.1, t+0.1);
+                g2.gain.linearRampToValueAtTime(0, t+1);
+                osc2.connect(g2); g2.connect(this.master);
+                osc2.start(t); osc2.stop(t+1);
             }
         };
 
-        // --- 2. 3D SCENE & BOTANY ENGINE ---
+        // --- 2. 3D SCENE ---
         const Scene = {
             scene: null, camera: null, renderer: null, controls: null,
             raycaster: new THREE.Raycaster(), mouse: new THREE.Vector2(),
+            activeLabel: null, // Track currently open label
 
             init: function() {
                 this.scene = new THREE.Scene();
@@ -232,7 +211,6 @@
                 this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
                 document.body.appendChild(this.renderer.domElement);
 
-                // Lights
                 const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 0.6);
                 this.scene.add(hemi);
                 const sun = new THREE.DirectionalLight(0xfff5e1, 1.2);
@@ -247,13 +225,12 @@
                 this.controls.enableDamping = true;
                 this.controls.maxPolarAngle = Math.PI/2 - 0.05;
 
-                // Tap interaction
+                // CLICK HANDLING
                 let downTime = 0;
                 window.addEventListener('pointerdown', () => downTime = Date.now());
                 window.addEventListener('pointerup', (e) => {
                     if(Date.now() - downTime < 200) this.onTap(e);
                 });
-                
                 window.addEventListener('resize', () => {
                     this.camera.aspect = window.innerWidth/window.innerHeight;
                     this.camera.updateProjectionMatrix();
@@ -268,9 +245,8 @@
                 const geo = new THREE.PlaneGeometry(200, 200, 100, 100);
                 const pos = geo.attributes.position;
                 const colors = [];
-                const c1 = new THREE.Color(0x689F38); // Base Green
-                const c2 = new THREE.Color(0xDCEDC8); // Dry Green
-                
+                const c1 = new THREE.Color(0x689F38); 
+                const c2 = new THREE.Color(0xDCEDC8); 
                 for(let i=0; i<pos.count; i++){
                     const x = pos.getX(i); const y = pos.getY(i);
                     let z = simplex.noise2D(x*0.02, y*0.02) * 2;
@@ -290,7 +266,34 @@
                 this.getH = (x,z) => simplex.noise2D(x*0.02, -z*0.02)*2 + simplex.noise2D(x*0.05, -z*0.05)*0.5;
             },
 
-            // --- REALISTIC TREE GENERATOR ---
+            createLabelTexture: function(text, subtext) {
+                const cvs = document.createElement('canvas');
+                cvs.width = 512; cvs.height = 256;
+                const ctx = cvs.getContext('2d');
+                
+                // Background bubble
+                ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
+                ctx.beginPath();
+                ctx.roundRect(10, 10, 492, 236, 40);
+                ctx.fill();
+                ctx.strokeStyle = "#2E7D32";
+                ctx.lineWidth = 10;
+                ctx.stroke();
+
+                // Text
+                ctx.fillStyle = "#333";
+                ctx.font = "bold 70px Arial";
+                ctx.textAlign = "center";
+                ctx.fillText(text, 256, 110);
+                
+                ctx.fillStyle = "#2E7D32";
+                ctx.font = "bold 60px Arial";
+                ctx.fillText(subtext, 256, 200);
+
+                const tex = new THREE.CanvasTexture(cvs);
+                return tex;
+            },
+
             plantTree: function(goal) {
                 const x = (Math.random()-0.5)*50;
                 const z = (Math.random()-0.5)*50;
@@ -300,7 +303,7 @@
                 group.position.set(x,y,z);
                 group.userData = { id: goal.id };
 
-                // 1. Tapered Trunk
+                // TRUNK
                 const tGeo = new THREE.CylinderGeometry(0.1, 0.3, 1.5, 7);
                 const woodMat = new THREE.MeshStandardMaterial({ color: 0x5D4037, flatShading: true });
                 const trunk = new THREE.Mesh(tGeo, woodMat);
@@ -309,85 +312,101 @@
                 trunk.name = "TRUNK";
                 group.add(trunk);
 
-                // 2. Branch Structure (Invisible initially, reveals on growth)
+                // CANOPY
                 const canopy = new THREE.Group();
-                canopy.position.y = 1.2; // Start of branches
+                canopy.position.y = 1.2; 
                 canopy.name = "CANOPY";
                 
-                // Create 4 main branches
-                const branchCount = 4;
                 const leafMat = new THREE.MeshStandardMaterial({ color: 0x43A047, flatShading: true });
-                
-                for(let i=0; i<branchCount; i++) {
-                    const branchContainer = new THREE.Group();
-                    branchContainer.rotation.y = (i/branchCount) * Math.PI * 2;
-                    
-                    // The wood branch
-                    const bGeo = new THREE.CylinderGeometry(0.05, 0.1, 0.8, 4);
-                    const branch = new THREE.Mesh(bGeo, woodMat);
-                    branch.position.y = 0.4;
-                    branch.position.z = 0.2; // Offset
-                    branch.rotation.x = Math.PI / 4; // Tilt out
-                    branchContainer.add(branch);
-
-                    // The Leaf Cluster (Tuft)
-                    const lGeo = new THREE.DodecahedronGeometry(0.4);
-                    const leaf = new THREE.Mesh(lGeo, leafMat);
-                    leaf.position.set(0, 0.8, 0.5); // End of branch
-                    leaf.castShadow = true;
-                    leaf.name = "LEAF"; // Mark for coloring/hiding
-                    branchContainer.add(leaf);
-
-                    canopy.add(branchContainer);
+                // Branches
+                for(let i=0; i<4; i++) {
+                    const bCont = new THREE.Group();
+                    bCont.rotation.y = (i/4)*Math.PI*2;
+                    const b = new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.1,0.8,4), woodMat);
+                    b.position.set(0, 0.4, 0.2); b.rotation.x = Math.PI/4;
+                    bCont.add(b);
+                    const l = new THREE.Mesh(new THREE.DodecahedronGeometry(0.4), leafMat);
+                    l.position.set(0, 0.8, 0.5); l.castShadow=true; l.name="LEAF";
+                    bCont.add(l);
+                    canopy.add(bCont);
                 }
-                
-                // Add a top tuft
-                const topLeaf = new THREE.Mesh(new THREE.DodecahedronGeometry(0.5), leafMat);
-                topLeaf.position.y = 0.5;
-                topLeaf.castShadow = true;
-                topLeaf.name = "LEAF";
-                canopy.add(topLeaf);
-
+                const topL = new THREE.Mesh(new THREE.DodecahedronGeometry(0.5), leafMat);
+                topL.position.y = 0.5; topL.castShadow=true; topL.name="LEAF";
+                canopy.add(topL);
                 group.add(canopy);
+
+                // LABEL (Sprite)
+                const map = this.createLabelTexture(goal.name, `${goal.streak}/${goal.totalDays} Days`);
+                const mat = new THREE.SpriteMaterial({ map: map });
+                const sprite = new THREE.Sprite(mat);
+                sprite.position.set(0, 4, 0); // Float above tree
+                sprite.scale.set(4, 2, 1);
+                sprite.visible = false; // Hidden by default
+                sprite.name = "LABEL";
+                group.add(sprite);
+
                 this.scene.add(group);
-                
                 goal.mesh = group;
                 this.updateTree(goal);
-
-                // Return position for zooming
                 return group.position;
             },
 
             updateTree: function(goal) {
                 if(!goal.mesh) return;
-                const trunk = goal.mesh.getObjectByName("TRUNK");
                 const canopy = goal.mesh.getObjectByName("CANOPY");
+                const trunk = goal.mesh.getObjectByName("TRUNK");
+                const label = goal.mesh.getObjectByName("LABEL");
+
+                // Update Label Text
+                label.material.map = this.createLabelTexture(goal.name, `${goal.streak}/${goal.totalDays} Days`);
 
                 if(goal.status === 'dead') {
-                    // Dead Look
-                    const deadMat = new THREE.MeshStandardMaterial({ color: 0x4E342E });
-                    trunk.material = deadMat;
-                    canopy.traverse(obj => {
-                        if(obj.isMesh) obj.material = deadMat; // Everything brown
-                        if(obj.name === "LEAF") obj.visible = false; // No leaves
-                    });
-                    goal.mesh.rotation.z = 0.1; // slight tilt
+                    trunk.material = new THREE.MeshStandardMaterial({ color: 0x4E342E });
+                    canopy.traverse(o => { if(o.name==="LEAF") o.visible=false; });
                 } else {
-                    // Growth
+                    // Current Scale
                     const p = Math.min(1, goal.streak / goal.totalDays);
-                    const scale = 0.5 + (p * 1.5); // 0.5x to 2.0x
+                    const scale = 0.5 + (p * 1.5); 
                     
                     trunk.scale.set(1+p, scale, 1+p);
-                    canopy.position.y = (scale * 0.7) + 0.5; // Move up with trunk
+                    canopy.position.y = (scale * 0.7) + 0.5;
                     canopy.scale.setScalar(scale);
-
-                    // Fruiting
-                    if(goal.status === 'completed') {
-                        canopy.traverse(obj => {
-                            if(obj.name === "LEAF") obj.material = new THREE.MeshStandardMaterial({ color: 0xFFD700 });
-                        });
-                    }
+                    
+                    // Adjust label height based on growth
+                    label.position.y = 2 + (scale * 1.5);
                 }
+            },
+
+            animateGrowth: function(goal) {
+                if(!goal.mesh) return;
+                
+                // Sound
+                AudioEngine.playMagic();
+
+                // 1. Zoom Camera
+                this.zoomTo(goal.mesh.position);
+
+                // 2. Animate Scale
+                const canopy = goal.mesh.getObjectByName("CANOPY");
+                const trunk = goal.mesh.getObjectByName("TRUNK");
+                const label = goal.mesh.getObjectByName("LABEL");
+
+                const p = Math.min(1, goal.streak / goal.totalDays);
+                const targetScale = 0.5 + (p * 1.5);
+                const startScale = canopy.scale.x; // Current scale
+
+                const anim = { s: startScale };
+                
+                new TWEEN.Tween(anim)
+                    .to({ s: targetScale }, 2000) // 2 second growth
+                    .easing(TWEEN.Easing.Elastic.Out)
+                    .onUpdate(() => {
+                        trunk.scale.set(1+p, anim.s, 1+p);
+                        canopy.position.y = (anim.s * 0.7) + 0.5;
+                        canopy.scale.setScalar(anim.s);
+                        label.position.y = 2 + (anim.s * 1.5);
+                    })
+                    .start();
             },
 
             onTap: function(e) {
@@ -395,11 +414,31 @@
                 this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
                 this.raycaster.setFromCamera(this.mouse, this.camera);
                 const hits = this.raycaster.intersectObjects(this.scene.children, true);
+                
+                // Hide existing label if any
+                if(this.activeLabel) {
+                    this.activeLabel.visible = false;
+                    this.activeLabel = null;
+                }
+
                 for(let hit of hits) {
                     let obj = hit.object;
                     while(obj.parent && obj.parent.type !== 'Scene') {
+                        // Found a tree
                         if(obj.userData.id) {
-                            App.openSidebarFor(obj.userData.id);
+                            // Show Label
+                            const label = obj.getObjectByName("LABEL");
+                            if(label) {
+                                label.visible = true;
+                                this.activeLabel = label;
+                                
+                                // Also slight bounce effect on label
+                                label.scale.set(0,0,0);
+                                new TWEEN.Tween(label.scale)
+                                    .to({x:4, y:2, z:1}, 400)
+                                    .easing(TWEEN.Easing.Back.Out)
+                                    .start();
+                            }
                             return;
                         }
                         obj = obj.parent;
@@ -407,58 +446,45 @@
                 }
             },
 
-            // --- CINEMATIC ZOOM ---
             zoomTo: function(pos) {
-                const startPos = this.camera.position.clone();
-                const startTarget = this.controls.target.clone();
-                
-                // Calculate nice offset view
-                const endPos = pos.clone().add(new THREE.Vector3(5, 5, 5));
-                const endTarget = pos.clone();
+                const endPos = pos.clone().add(new THREE.Vector3(5, 4, 5)); // Close up angle
+                const endTarget = pos.clone().add(new THREE.Vector3(0, 1, 0)); // Look at tree center
 
-                new TWEEN.Tween(this.camera.position)
-                    .to(endPos, 1500)
-                    .easing(TWEEN.Easing.Cubic.Out)
-                    .start();
-
-                new TWEEN.Tween(this.controls.target)
-                    .to(endTarget, 1500)
-                    .easing(TWEEN.Easing.Cubic.Out)
-                    .start();
+                new TWEEN.Tween(this.camera.position).to(endPos, 1500).easing(TWEEN.Easing.Cubic.Out).start();
+                new TWEEN.Tween(this.controls.target).to(endTarget, 1500).easing(TWEEN.Easing.Cubic.Out).start();
             },
 
             animate: function(time) {
                 requestAnimationFrame((t) => this.animate(t));
                 TWEEN.update(time);
+                // Make label face camera
+                if(this.activeLabel) {
+                    // Simple sprite always faces camera natively, no code needed for rotation
+                    // But we might want bobbing?
+                    this.activeLabel.position.y += Math.sin(time * 0.005) * 0.005; 
+                }
                 this.controls.update();
                 this.renderer.render(this.scene, this.camera);
             }
         };
 
-        // --- 3. APP CONTROLLER ---
+        // --- 3. APP LOGIC ---
         const App = {
-            goals: [],
-            activeTab: 'active',
+            goals: [], activeTab: 'active',
             
             init: function() {
                 Scene.init();
-                
-                // DOM Elements
                 this.sidebar = document.getElementById('sidebar');
                 this.fab = document.getElementById('fab-add');
                 this.modal = document.getElementById('add-modal');
                 
-                // Listeners
                 document.getElementById('desktop-menu').onclick = () => this.toggleSidebar(true);
                 document.getElementById('close-sidebar').onclick = () => this.toggleSidebar(false);
-                document.getElementById('sound-toggle').onclick = () => AudioEngine.toggle();
                 
-                // FAB & Modal
                 this.fab.onclick = () => this.modal.classList.add('show');
                 document.getElementById('btn-modal-close').onclick = () => this.modal.classList.remove('show');
                 document.getElementById('btn-modal-add').onclick = () => this.createGoal();
 
-                // Initial Data
                 this.addGoalToData("Morning Jog", 30);
             },
 
@@ -466,46 +492,27 @@
                 if(open) this.sidebar.classList.add('open');
                 else this.sidebar.classList.remove('open');
             },
-
             switchTab: function(tab) {
                 this.activeTab = tab;
                 document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
                 event.target.classList.add('active');
                 this.renderList();
             },
-
             createGoal: function() {
                 const name = document.getElementById('m-name').value;
                 const days = parseInt(document.getElementById('m-days').value);
                 if(!name) return;
-                
                 this.addGoalToData(name, days);
-                
-                // Close modal, clear inputs
                 this.modal.classList.remove('show');
                 document.getElementById('m-name').value = '';
             },
-
             addGoalToData: function(name, days) {
-                const goal = {
-                    id: Date.now(),
-                    name: name,
-                    totalDays: days,
-                    streak: 0,
-                    status: 'active',
-                    mesh: null
-                };
+                const goal = { id: Date.now(), name: name, totalDays: days, streak: 0, status: 'active', mesh: null };
                 this.goals.push(goal);
-                
-                // 1. Plant Tree
                 const pos = Scene.plantTree(goal);
-                
-                // 2. Zoom Camera
                 Scene.zoomTo(pos);
-
                 this.renderList();
             },
-
             process: function(id, type) {
                 const g = this.goals.find(x => x.id === id);
                 if(!g) return;
@@ -513,33 +520,28 @@
                 if(type === 'check') {
                     g.streak++;
                     if(g.streak >= g.totalDays) g.status = 'completed';
+                    
+                    // TRIGGER GROWTH ANIMATION
+                    Scene.updateTree(g); // Update internal state stats
+                    Scene.animateGrowth(g); // Play animation and sound
+                    
+                    // Close sidebar to show the show
+                    if(window.innerWidth < 768) this.toggleSidebar(false);
                 } else {
                     g.status = 'dead';
+                    Scene.updateTree(g);
                 }
-                Scene.updateTree(g);
                 this.renderList();
             },
-
-            openSidebarFor: function(id) {
-                const g = this.goals.find(x => x.id === id);
-                this.activeTab = g.status; // Switch to correct tab
-                this.toggleSidebar(true);
-                this.renderList();
-                // Highlight logic could go here
-            },
-
             renderList: function() {
                 const list = document.getElementById('goal-list');
                 list.innerHTML = '';
-                
                 const visible = this.goals.filter(g => g.status === this.activeTab);
-                
-                if(visible.length === 0) list.innerHTML = `<div style="text-align:center;color:#999;margin-top:20px">No goals here.</div>`;
+                if(visible.length === 0) list.innerHTML = `<div style="text-align:center;color:#999;">No goals here.</div>`;
 
                 visible.forEach(g => {
                     const el = document.createElement('div');
                     el.className = `goal-item ${g.status}`;
-                    
                     let btns = '';
                     if(g.status === 'active') {
                         btns = `
@@ -548,20 +550,10 @@
                             <button class="btn-act btn-no" onclick="App.process(${g.id}, 'fail')">✗ Missed</button>
                         </div>`;
                     }
-                    
                     el.innerHTML = `
-                        <div class="gi-top">
-                            <span class="gi-name">${g.name}</span>
-                            <span class="gi-days">${g.streak}/${g.totalDays}</span>
-                        </div>
+                        <div class="gi-top"><span class="gi-name">${g.name}</span><span class="gi-days">${g.streak}/${g.totalDays}</span></div>
                         ${btns}
                     `;
-                    el.onclick = (e) => {
-                        if(e.target.tagName !== 'BUTTON') {
-                            Scene.zoomTo(g.mesh.position);
-                            if(window.innerWidth < 768) this.toggleSidebar(false);
-                        }
-                    }
                     list.appendChild(el);
                 });
             }
