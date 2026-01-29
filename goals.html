@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Valley of Focus - Botany Update</title>
+    <title>Valley of Focus - 20 Tasks</title>
     <style>
         :root { 
             --primary: #2E7D32; 
@@ -253,7 +253,7 @@
                 this.scene.fog = new THREE.Fog(0x87CEEB, 20, 80);
 
                 this.camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 100);
-                this.camera.position.set(0, 15, 30);
+                this.camera.position.set(0, 20, 40); // Zoomed out slightly for more trees
 
                 this.renderer = new THREE.WebGLRenderer({ antialias: true });
                 this.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -292,7 +292,7 @@
 
             createGround: function() {
                 const simplex = new SimplexNoise();
-                const geo = new THREE.PlaneGeometry(200, 200, 100, 100);
+                const geo = new THREE.PlaneGeometry(250, 250, 100, 100);
                 const pos = geo.attributes.position;
                 const colors = [];
                 const c1 = new THREE.Color(0x689F38); 
@@ -318,8 +318,9 @@
             },
 
             plantTree: function(goal) {
-                const x = (Math.random()-0.5)*50;
-                const z = (Math.random()-0.5)*50;
+                // Increased spread for 20 trees
+                const x = (Math.random()-0.5)*80;
+                const z = (Math.random()-0.5)*80;
                 const y = this.getH(x,z);
                 
                 const group = new THREE.Group();
@@ -327,11 +328,10 @@
                 group.userData = { id: goal.id };
 
                 // 1. HIT BOX (Invisible, wider target for tapping)
-                // Opacity 0 makes it invisible but Raycaster can still hit it if transparent=true
-                const hitGeo = new THREE.CylinderGeometry(1.5, 1.5, 4, 8);
+                const hitGeo = new THREE.CylinderGeometry(2, 2, 5, 8);
                 const hitMat = new THREE.MeshBasicMaterial({ color: 0xff0000, transparent: true, opacity: 0 });
                 const hitBox = new THREE.Mesh(hitGeo, hitMat);
-                hitBox.position.y = 2;
+                hitBox.position.y = 2.5;
                 hitBox.name = "HITBOX";
                 group.add(hitBox);
 
@@ -402,8 +402,9 @@
                     goal.mesh.rotation.z = 0.1;
                 } else {
                     const p = Math.min(1, goal.streak / goal.totalDays);
-                    const scale = 0.5 + (p * 1.5);
-                    trunk.scale.set(1+p, scale, 1+p);
+                    // Scale factor: 0.5x (baby) to 2.5x (giant tree)
+                    const scale = 0.5 + (p * 2.0);
+                    trunk.scale.set(1+(p*0.5), scale, 1+(p*0.5));
                     canopy.position.y = (scale * 0.7) + 0.5;
                     canopy.scale.setScalar(scale);
 
@@ -416,23 +417,20 @@
             },
 
             onTap: function(e) {
-                // Calculate mouse position in normalized device coordinates
                 this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
                 this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
                 this.raycaster.setFromCamera(this.mouse, this.camera);
                 
-                // Raycast
                 const hits = this.raycaster.intersectObjects(this.scene.children, true);
                 let foundTree = false;
 
                 for(let hit of hits) {
                     let obj = hit.object;
-                    // Traverse up until we find the Group with ID
                     while(obj) {
                         if(obj.userData && obj.userData.id) {
                             App.selectGoal(obj.userData.id);
                             foundTree = true;
-                            return; // Stop looking
+                            return;
                         }
                         obj = obj.parent;
                     }
@@ -479,7 +477,19 @@
                 document.getElementById('btn-modal-close').onclick = () => this.modal.classList.remove('show');
                 document.getElementById('btn-modal-add').onclick = () => this.createGoal();
 
-                this.addGoalToData("Morning Jog", 30);
+                // --- GENERATE 20 RANDOM TASKS ---
+                const tasks = [
+                    "Read 30 mins", "Learn Python", "Drink Water", "Gym", "Meditation",
+                    "Save $10", "Call Mom", "Study Physics", "Walk Dog", "No Sugar",
+                    "Journal", "Learn 3D", "Yoga", "Sleep 8h", "Vitamin D",
+                    "Clean Room", "Piano", "Write Blog", "Network", "Sketch"
+                ];
+
+                tasks.forEach(name => {
+                    const total = 30 + Math.floor(Math.random() * 30); // 30-60 days
+                    const progress = Math.floor(Math.random() * total); // Random progress 0-total
+                    this.addGoalToData(name, total, progress);
+                });
             },
 
             selectGoal: function(id) {
@@ -535,23 +545,27 @@
                 const name = document.getElementById('m-name').value;
                 const days = parseInt(document.getElementById('m-days').value);
                 if(!name) return;
-                this.addGoalToData(name, days);
+                this.addGoalToData(name, days, 0);
                 this.modal.classList.remove('show');
                 document.getElementById('m-name').value = '';
             },
 
-            addGoalToData: function(name, days) {
+            addGoalToData: function(name, days, initialStreak = 0) {
                 const goal = {
-                    id: Date.now(),
+                    id: Date.now() + Math.random(), // Unique ID
                     name: name,
                     totalDays: days,
-                    streak: 0,
-                    status: 'active',
+                    streak: initialStreak,
+                    status: initialStreak >= days ? 'completed' : 'active',
                     mesh: null
                 };
                 this.goals.push(goal);
+                
                 const pos = Scene.plantTree(goal);
-                setTimeout(() => this.selectGoal(goal.id), 100);
+                // Note: We don't auto-select on bulk load, only on manual create
+                if(initialStreak === 0 && this.goals.length > 20) {
+                    setTimeout(() => this.selectGoal(goal.id), 100);
+                }
                 this.renderList();
             },
 
