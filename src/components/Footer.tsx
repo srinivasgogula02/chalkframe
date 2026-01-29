@@ -8,13 +8,13 @@ export default function Footer() {
                     Chalkframe
                 </div>
                 <div className="flex gap-6 font-medium">
-                    <Link href="#" className="hover:text-white transition-colors">
+                    <Link href="/privacy" className="hover:text-white transition-colors">
                         Privacy
                     </Link>
-                    <Link href="#" className="hover:text-white transition-colors">
+                    <Link href="/terms" className="hover:text-white transition-colors">
                         Terms
                     </Link>
-                    <Link href="#" className="hover:text-white transition-colors">
+                    <Link href="https://www.linkedin.com/company/chalk-frame" className="hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
                         LinkedIn
                     </Link>
                 </div>
