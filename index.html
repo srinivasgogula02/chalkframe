@@ -3,16 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chalkframe | Business Automation & AI Solutions</title>
     
+    <!-- ==========================================
+         SEO & METADATA START
+    =========================================== -->
+    <title>Chalkframe | AI Transformation Consultancy & Business Automation</title>
+    <meta name="description" content="Chalkframe bridges the gap between business strategy and AI. We offer internal automation, custom AI solutions, and programmatic SEO to scale your business operations.">
+    <meta name="keywords" content="AI consultancy, business automation, AI SEO, custom AI solutions, workflow automation, digital transformation, Chalkframe">
+    <meta name="author" content="Chalkframe Solutions">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.chalkframe.com/">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.chalkframe.com/">
+    <meta property="og:title" content="Chalkframe | AI Transformation Consultancy">
+    <meta property="og:description" content="Drafting the future. Automating the present. We turn manual workflows into automated engines of growth using Artificial Intelligence.">
+    <meta property="og:image" content="https://www.chalkframe.com/banner.jpg"> <!-- Upload your banner.svg/jpg here -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.chalkframe.com/">
+    <meta property="twitter:title" content="Chalkframe | AI Transformation Consultancy">
+    <meta property="twitter:description" content="Drafting the future. Automating the present. We turn manual workflows into automated engines of growth using Artificial Intelligence.">
+    <meta property="twitter:image" content="https://www.chalkframe.com/banner.jpg">
+
+    <!-- Schema.org Structured Data (Google Rich Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Chalkframe",
+      "image": "https://www.chalkframe.com/logo.png",
+      "description": "AI Transformation Consultancy specializing in business automation, custom AI solutions, and programmatic SEO.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US" 
+      },
+      "priceRange": "$$$",
+      "telephone": "+1-555-0100",
+      "url": "https://www.chalkframe.com"
+    }
+    </script>
+    <!-- ==========================================
+         SEO END
+    =========================================== -->
+
+    <!-- Fonts: Space Grotesk (Headings) & Manrope (Body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Icons (Phosphor Icons) -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
+    <!-- Custom Configuration -->
     <script>
         tailwind.config = {
             theme: {
@@ -73,11 +121,14 @@
 </head>
 <body class="bg-slate-900 text-slate-50 font-sans antialiased selection:bg-violet-500 selection:text-white overflow-x-hidden">
 
+    <!-- Background Grid Layer -->
     <div class="fixed inset-0 bg-grid-pattern bg-grid opacity-[0.15] pointer-events-none z-0"></div>
     <div class="fixed top-0 left-1/4 w-96 h-96 bg-violet-900 rounded-full blur-[120px] opacity-30 pointer-events-none z-0 animate-glow"></div>
 
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 top-0 border-b border-white/5 bg-slate-900/90 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
             <a href="#" class="flex items-center gap-2 group">
                 <div class="w-6 h-6 border border-violet-500 bg-violet-500/20 relative group-hover:bg-violet-500/40 transition-colors">
                     <div class="absolute bottom-0 right-0 w-2 h-2 bg-violet-400 shadow-[0_0_10px_#a78bfa]"></div>
@@ -85,6 +136,7 @@
                 <span class="font-display font-bold text-xl tracking-wide uppercase">Chalkframe</span>
             </a>
 
+            <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-8 text-sm text-slate-300 font-medium">
                 <a href="#services" class="hover:text-white hover:text-violet-400 transition-colors">Services</a>
                 <a href="#clients" class="hover:text-white hover:text-violet-400 transition-colors">Clients</a>
@@ -94,11 +146,13 @@
                 </a>
             </div>
 
+            <!-- Mobile Menu Button -->
             <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
                 <i class="ph ph-list text-3xl"></i>
             </button>
         </div>
 
+        <!-- Mobile Dropdown Menu -->
         <div id="mobile-menu" class="md:hidden bg-slate-900 border-b border-white/5">
             <div class="px-6 py-4 space-y-4 flex flex-col">
                 <a href="#services" class="block text-slate-300 hover:text-violet-400 py-2 border-b border-white/5">Services</a>
@@ -109,6 +163,7 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="relative z-10 pt-32 md:pt-40 pb-16 px-6">
         <div class="max-w-7xl mx-auto text-center">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-xs font-mono mb-8 tracking-widest uppercase">
@@ -136,18 +191,21 @@
         </div>
     </section>
 
+    <!-- Trusted Partners -->
     <!-- <section id="clients" class="relative z-10 py-10 border-y border-white/5 bg-slate-900/50">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <p class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-8">Trusted By Forward-Thinking Companies</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60">
-                <div class="flex items-center gap-2 text-lg font-display font-bold text-white"><i class="ph-fill ph-hexagon text-2xl"></i> NEXUS</div>
-                <div class="flex items-center gap-2 text-lg font-display font-bold text-white"><i class="ph-fill ph-triangle text-2xl"></i> VORTEX</div>
-                <div class="flex items-center gap-2 text-lg font-display font-bold text-white"><i class="ph-fill ph-waves text-2xl"></i> FLUX.IO</div>
-                <div class="flex items-center gap-2 text-lg font-display font-bold text-white"><i class="ph-fill ph-circles-three text-2xl"></i> ORBITAL</div>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <!-- Client Logos (Simulated) -->
+                <!-- <div class="flex items-center gap-2 text-lg font-display font-bold text-white hover:text-violet-300 transition-colors"><i class="ph-fill ph-hexagon text-2xl"></i> NEXUS</div>
+                <div class="flex items-center gap-2 text-lg font-display font-bold text-white hover:text-violet-300 transition-colors"><i class="ph-fill ph-triangle text-2xl"></i> VORTEX</div>
+                <div class="flex items-center gap-2 text-lg font-display font-bold text-white hover:text-violet-300 transition-colors"><i class="ph-fill ph-waves text-2xl"></i> FLUX.IO</div>
+                <div class="flex items-center gap-2 text-lg font-display font-bold text-white hover:text-violet-300 transition-colors"><i class="ph-fill ph-circles-three text-2xl"></i> ORBITAL</div>
             </div>
         </div>
-    </section> -->
+    </section>  -->
 
+    <!-- Services Grid -->
     <section id="services" class="relative z-10 py-20 md:py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
@@ -156,6 +214,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Automation -->
                 <div class="glass-card p-8 group hover:border-violet-500/50 transition-all duration-300 hover:bg-slate-800/60">
                     <div class="w-12 h-12 flex items-center justify-center bg-slate-800 border border-slate-700 mb-6 text-violet-400 group-hover:text-white transition-colors">
                         <i class="ph ph-gear text-2xl"></i>
@@ -164,6 +223,7 @@
                     <p class="text-slate-300 text-sm leading-relaxed">Connect legacy systems with modern AI agents to streamline operations and reduce overhead.</p>
                 </div>
 
+                <!-- Solutions -->
                 <div class="glass-card p-8 group hover:border-violet-500/50 transition-all duration-300 hover:bg-slate-800/60">
                     <div class="w-12 h-12 flex items-center justify-center bg-slate-800 border border-slate-700 mb-6 text-violet-400 group-hover:text-white transition-colors">
                         <i class="ph ph-brain text-2xl"></i>
@@ -172,6 +232,7 @@
                     <p class="text-slate-300 text-sm leading-relaxed">Bespoke models built specifically for your data. From chatbots to predictive analytics engines.</p>
                 </div>
 
+                <!-- SEO -->
                 <div class="glass-card p-8 group hover:border-violet-500/50 transition-all duration-300 hover:bg-slate-800/60">
                     <div class="w-12 h-12 flex items-center justify-center bg-slate-800 border border-slate-700 mb-6 text-violet-400 group-hover:text-white transition-colors">
                         <i class="ph ph-trend-up text-2xl"></i>
@@ -180,6 +241,7 @@
                     <p class="text-slate-300 text-sm leading-relaxed">Dominate search rankings with data-driven content strategies and automated landing page generation.</p>
                 </div>
 
+                <!-- Content -->
                 <div class="glass-card p-8 group hover:border-violet-500/50 transition-all duration-300 hover:bg-slate-800/60 relative overflow-hidden">
                     <div class="absolute -top-10 -right-10 w-32 h-32 bg-violet-500/10 rounded-full blur-2xl group-hover:bg-violet-500/20 transition-all"></div>
                     <div class="w-12 h-12 flex items-center justify-center bg-slate-800 border border-slate-700 mb-6 text-violet-400 group-hover:text-white transition-colors">
@@ -192,6 +254,7 @@
         </div>
     </section>
 
+    <!-- About Us Section -->
     <section id="about" class="relative z-10 py-20 bg-slate-900 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row gap-12 items-center">
@@ -234,56 +297,74 @@
         </div>
     </section>
 
+    <!-- Contact Section WITH FUNCTIONAL FORM -->
     <section id="contact" class="relative z-10 py-24 px-6 text-center border-t border-slate-800 bg-slate-900/80">
         <div class="max-w-2xl mx-auto">
             <h2 class="font-display text-4xl font-bold mb-4">Ready to Build?</h2>
             <p class="text-slate-300 mb-10">Tell us about your manual workflows. We'll tell you how to automate them.</p>
             
-            <form class="text-left space-y-4" onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly.');">
+            <!-- 
+                FORM SETUP INSTRUCTIONS:
+                1. Go to https://formspree.io/ and sign up.
+                2. Create a new "Form" in their dashboard.
+                3. Copy the "Endpoint" URL they give you.
+                4. Paste it below into action="PASTE_URL_HERE".
+                5. That's it! No backend code needed.
+            -->
+            <form id="contact-form" action="https://formspree.io/f/myzoebkz" method="POST" class="text-left space-y-4">
+                
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs text-slate-400 mb-1 font-mono uppercase">Name</label>
-                        <input type="text" class="w-full bg-slate-800 border border-slate-700 text-white px-4 py-3 focus:outline-none focus:border-violet-500 transition-colors" placeholder="John Doe">
+                        <input type="text" name="name" required class="w-full bg-slate-800 border border-slate-700 text-white px-4 py-3 focus:outline-none focus:border-violet-500 transition-colors rounded-sm" placeholder="John Doe">
                     </div>
                     <div>
                         <label class="block text-xs text-slate-400 mb-1 font-mono uppercase">Email</label>
-                        <input type="email" class="w-full bg-slate-800 border border-slate-700 text-white px-4 py-3 focus:outline-none focus:border-violet-500 transition-colors" placeholder="john@company.com">
+                        <input type="email" name="email" required class="w-full bg-slate-800 border border-slate-700 text-white px-4 py-3 focus:outline-none focus:border-violet-500 transition-colors rounded-sm" placeholder="john@company.com">
                     </div>
                 </div>
                 <div>
                     <label class="block text-xs text-slate-400 mb-1 font-mono uppercase">Company Name</label>
-                    <input type="text" class="w-full bg-slate-800 border border-slate-700 text-white px-4 py-3 focus:outline-none focus:border-violet-500 transition-colors" placeholder="Acme Corp">
+                    <input type="text" name="company" class="w-full bg-slate-800 border border-slate-700 text-white px-4 py-3 focus:outline-none focus:border-violet-500 transition-colors rounded-sm" placeholder="Acme Corp">
                 </div>
                 <div>
                     <label class="block text-xs text-slate-400 mb-1 font-mono uppercase">Challenge</label>
-                    <textarea rows="4" class="w-full bg-slate-800 border border-slate-700 text-white px-4 py-3 focus:outline-none focus:border-violet-500 transition-colors" placeholder="Describe the process you want to automate..."></textarea>
+                    <textarea name="message" rows="4" required class="w-full bg-slate-800 border border-slate-700 text-white px-4 py-3 focus:outline-none focus:border-violet-500 transition-colors rounded-sm" placeholder="Describe the process you want to automate..."></textarea>
                 </div>
-                <button type="submit" class="w-full py-4 bg-violet-600 hover:bg-violet-500 text-white font-display font-bold uppercase tracking-wide transition-all shadow-lg shadow-violet-900/20">
+                
+                <!-- Success Message Container -->
+                <div id="form-status" class="hidden p-4 mb-4 text-sm text-green-400 bg-green-900/20 border border-green-500/30 rounded-sm">
+                    Message sent successfully! We will be in touch shortly.
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-violet-600 hover:bg-violet-500 text-white font-display font-bold uppercase tracking-wide transition-all shadow-lg shadow-violet-900/20 rounded-sm">
                     Submit Request
                 </button>
             </form>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="py-8 border-t border-white/5 text-center text-slate-500 text-sm bg-slate-900">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="font-display font-bold text-slate-300 uppercase tracking-widest">Chalkframe</div>
             <div class="flex gap-6">
-                <a href="#" class="hover:text-white">Privacy</a>
-                <a href="#" class="hover:text-white">Terms</a>
-                <a href="#" class="hover:text-white">Twitter</a>
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="https://www.linkedin.com/company/107475136" class="hover:text-white transition-colors">LinkedIn</a>
             </div>
-            <div>&copy; 2025 Chalkframe.</div>
+            <div>&copy; 2025 Chalkframe. All rights reserved.</div>
         </div>
     </footer>
 
+    <!-- JavaScript for Interaction -->
     <script>
+        // Mobile Menu Logic
         const btn = document.getElementById('mobile-menu-btn');
         const menu = document.getElementById('mobile-menu');
         const icon = btn.querySelector('i');
         const links = menu.querySelectorAll('a');
 
-        // Toggle Menu
         btn.addEventListener('click', () => {
             menu.classList.toggle('open');
             if (menu.classList.contains('open')) {
@@ -295,7 +376,6 @@
             }
         });
 
-        // Close menu when a link is clicked
         links.forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.remove('open');
@@ -303,6 +383,43 @@
                 icon.classList.add('ph-list');
             });
         });
+
+        // Form Handling (AJAX Submission to prevent redirect)
+        var form = document.getElementById("contact-form");
+        
+        async function handleSubmit(event) {
+            event.preventDefault();
+            var status = document.getElementById("form-status");
+            var data = new FormData(event.target);
+            
+            // NOTE: Remove the following 'if' block when you add your real Formspree ID
+            
+
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    status.classList.remove("hidden");
+                    form.reset();
+                    setTimeout(() => status.classList.add("hidden"), 5000);
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("Oops! There was a problem submitting your form");
+                        }
+                    })
+                }
+            }).catch(error => {
+                alert("Oops! There was a problem submitting your form");
+            });
+        }
+        form.addEventListener("submit", handleSubmit);
     </script>
 </body>
 </html>
