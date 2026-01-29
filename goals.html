@@ -16,8 +16,9 @@
             margin: 0; overflow: hidden; background: #87CEEB;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             -webkit-tap-highlight-color: transparent;
-            /* Ensure full height usage */
+            /* FIXED: Use dvh to account for mobile browser address bars */
             height: 100vh;
+            height: 100dvh; 
             width: 100vw;
         }
         
@@ -26,22 +27,23 @@
         /* --- UI ELEMENTS (Safe Area Fixes) --- */
         
         /* 1. Menu Button (Top Left) */
+        /* FIXED: Increased top margin to 50px to clear mobile status bars/notches */
         #desktop-menu {
             position: absolute;
-            /* Use 'max' to ensure it's at least 20px, but more if a notch exists */
-            top: max(20px, env(safe-area-inset-top) + 20px);
+            top: max(50px, env(safe-area-inset-top) + 20px);
             left: max(20px, env(safe-area-inset-left) + 20px);
             background: white; padding: 10px; border-radius: 50%;
             width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15); cursor: pointer; 
-            z-index: 1000; /* High Z-Index to stay on top */
+            z-index: 1000;
             font-size: 1.4rem;
         }
 
         /* 2. Audio Toggle (Top Right) */
+        /* FIXED: Increased top margin to match menu button */
         #sound-toggle {
             position: absolute; 
-            top: max(20px, env(safe-area-inset-top) + 25px);
+            top: max(55px, env(safe-area-inset-top) + 25px);
             right: max(20px, env(safe-area-inset-right) + 20px);
             background: white; padding: 8px 12px; border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.15); cursor: pointer;
@@ -51,7 +53,7 @@
         /* 3. FAB (Bottom Center) */
         #fab-add {
             position: absolute; 
-            bottom: max(30px, env(safe-area-inset-bottom) + 20px); 
+            bottom: max(30px, env(safe-area-inset-bottom) + 30px); 
             left: 50%; transform: translateX(-50%) scale(1);
             width: 60px; height: 60px;
             background: var(--primary); color: white;
@@ -69,7 +71,7 @@
             position: absolute; bottom: 0; left: 0; right: 0;
             background: var(--surface);
             border-top-left-radius: 25px; border-top-right-radius: 25px;
-            /* Add padding at bottom for home swipe bars */
+            /* FIXED: Slightly increased bottom padding for better scroll/home bar clearance */
             padding: 25px 25px max(40px, env(safe-area-inset-bottom) + 20px) 25px;
             box-shadow: 0 -5px 30px rgba(0,0,0,0.15);
             z-index: 96;
@@ -104,7 +106,7 @@
             transform: translateX(-105%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 2000; /* Highest Z-index to cover everything */
             display: flex; flex-direction: column;
-            padding-top: env(safe-area-inset-top); /* Push content down from notch */
+            padding-top: max(40px, env(safe-area-inset-top)); /* Push content down from notch */
         }
         #sidebar.open { transform: translateX(0); }
         
@@ -577,9 +579,10 @@
                 this.goals.push(goal);
                 
                 const pos = Scene.plantTree(goal);
-                if(initialStreak === 0 && this.goals.length > 20) {
-                    setTimeout(() => this.selectGoal(goal.id), 100);
-                }
+                
+                // FIXED: REMOVED AUTO SELECT LOGIC HERE
+                // The panel will now only open when you click a tree
+                
                 this.renderList();
             },
 
