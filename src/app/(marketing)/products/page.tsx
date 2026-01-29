@@ -8,6 +8,7 @@ import {
     Robot,
     Database,
 } from "@phosphor-icons/react/dist/ssr";
+import ProductsBackground from "@/assets/products-background.png";
 
 export const metadata: Metadata = {
     title: "Products | Chalkframe",
@@ -24,11 +25,13 @@ export default function ProductsPage() {
             <section className="relative pt-40 pb-20 px-6 text-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="https://blogger.googleusercontent.com/img/a/AVvXsEjJmY5bFAHqBJ8a0AreVUiUgNSAlsZWpvJuxL-OASBhHo2qZIr5HVNem37S0IhcnGuP5kDUg1NBRPipHkGYAqg7QwSUyn5qAn5f-2vNQHFeYZb0tRK-ZxVCUJDgQdVZb5CGBWKvEM5blOn20WgQdUSmEnwSLzCNSLFl2R_JVSxRkORgaZ6LdWxjtSom-gg"
+                        src={ProductsBackground}
                         alt="Background"
                         fill
                         className="object-cover opacity-50"
                         priority
+                        placeholder="blur"
+                        sizes="100vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/80 to-slate-900"></div>
                 </div>
