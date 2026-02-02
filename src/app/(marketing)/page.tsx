@@ -64,7 +64,7 @@ export default function Home() {
             src={HeroBackground}
             alt="Background"
             fill
-            className="object-cover opacity-30"
+            className="object-cover opacity-70"
             priority
             placeholder="blur"
             sizes="100vw"
