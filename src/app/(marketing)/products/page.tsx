@@ -7,6 +7,9 @@ import {
     Article,
     Robot,
     Database,
+    RocketLaunch,
+    TerminalWindow,
+    BriefcaseMetal
 } from "@phosphor-icons/react/dist/ssr";
 import ProductsBackground from "@/assets/products-background.png";
 
@@ -140,6 +143,148 @@ export default function ProductsPage() {
                             </Link>
                         </div>
                     </div>
+
+                    {/* NEW PRODUCTS START */}
+                    <div className="glass-card p-8 rounded-3xl flex flex-col relative overflow-hidden group hover:bg-white/5 transition-all duration-300">
+                        <div className="flex justify-between items-start mb-6 relative z-10">
+                            <div className="w-14 h-14 bg-slate-800/50 border border-white/10 rounded-2xl flex items-center justify-center text-amber-400">
+                                <Robot className="text-3xl" weight="fill" />
+                            </div>
+                            <span className="px-3 py-1 bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] font-bold uppercase tracking-wider rounded-full">
+                                Available Now
+                            </span>
+                        </div>
+
+                        <h3 className="font-display text-2xl font-bold text-white mb-2 relative z-10">
+                            The AI Advantage
+                        </h3>
+                        <p className="text-slate-400 text-sm mb-8 flex-grow leading-relaxed relative z-10">
+                            Stop learning AI. Just copy us. Get our private prompt library and weekly copy-paste AI workflows delivered to your inbox.
+                        </p>
+
+                        <div className="pt-6 border-t border-white/5 relative z-10">
+                            <div className="flex items-end gap-2 mb-4">
+                                <span className="text-3xl font-display font-bold text-white">
+                                    ₹499
+                                </span>
+                                <span className="text-xs text-slate-500 mb-1 uppercase tracking-wider">
+                                    / Month
+                                </span>
+                            </div>
+                            <Link
+                                href="/ai"
+                                className="block w-full py-3 bg-white/10 text-white text-center font-bold hover:bg-white/20 transition-colors rounded-xl"
+                            >
+                                View Details
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="glass-card p-8 rounded-3xl flex flex-col relative overflow-hidden group hover:bg-white/5 transition-all duration-300">
+                        <div className="flex justify-between items-start mb-6 relative z-10">
+                            <div className="w-14 h-14 bg-slate-800/50 border border-white/10 rounded-2xl flex items-center justify-center text-[#00FF41]">
+                                <RocketLaunch className="text-3xl" weight="fill" />
+                            </div>
+                            <span className="px-3 py-1 bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] font-bold uppercase tracking-wider rounded-full">
+                                Available Now
+                            </span>
+                        </div>
+
+                        <h3 className="font-display text-2xl font-bold text-white mb-2 relative z-10">
+                            MVP Studio
+                        </h3>
+                        <p className="text-slate-400 text-sm mb-8 flex-grow leading-relaxed relative z-10">
+                            Stop drawing pictures. Start shipping real software. We build your functional, coded web application MVP in days.
+                        </p>
+
+                        <div className="pt-6 border-t border-white/5 relative z-10">
+                            <div className="flex items-end gap-2 mb-4">
+                                <span className="text-3xl font-display font-bold text-white">
+                                    ₹24,999
+                                </span>
+                                <span className="text-xs text-slate-500 mb-1 uppercase tracking-wider">
+                                    / MVP
+                                </span>
+                            </div>
+                            <Link
+                                href="/prototype"
+                                className="block w-full py-3 bg-white/10 text-white text-center font-bold hover:bg-white/20 transition-colors rounded-xl"
+                            >
+                                View Details
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="glass-card p-8 rounded-3xl flex flex-col relative overflow-hidden group hover:bg-white/5 transition-all duration-300">
+                        <div className="flex justify-between items-start mb-6 relative z-10">
+                            <div className="w-14 h-14 bg-slate-800/50 border border-white/10 rounded-2xl flex items-center justify-center text-fuchsia-400">
+                                <TerminalWindow className="text-3xl" weight="fill" />
+                            </div>
+                            <span className="px-3 py-1 bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] font-bold uppercase tracking-wider rounded-full">
+                                Closing Soon
+                            </span>
+                        </div>
+
+                        <h3 className="font-display text-2xl font-bold text-white mb-2 relative z-10">
+                            Code Without Syntax
+                        </h3>
+                        <p className="text-slate-400 text-sm mb-8 flex-grow leading-relaxed relative z-10">
+                            10x Developer Masterclass. A 1-hour live webinar teaching developers how to bypass syntax using AI.
+                        </p>
+
+                        <div className="pt-6 border-t border-white/5 relative z-10">
+                            <div className="flex items-end gap-2 mb-4">
+                                <span className="text-3xl font-display font-bold text-white">
+                                    ₹49
+                                </span>
+                                <span className="text-xs text-slate-500 mb-1 uppercase tracking-wider">
+                                    / Seat
+                                </span>
+                            </div>
+                            <Link
+                                href="/prompting"
+                                className="block w-full py-3 bg-white/10 text-white text-center font-bold hover:bg-white/20 transition-colors rounded-xl"
+                            >
+                                Secure Seat
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="glass-card p-8 rounded-3xl flex flex-col relative overflow-hidden group hover:bg-white/5 transition-all duration-300">
+                        <div className="flex justify-between items-start mb-6 relative z-10">
+                            <div className="w-14 h-14 bg-slate-800/50 border border-white/10 rounded-2xl flex items-center justify-center text-blue-400">
+                                <BriefcaseMetal className="text-3xl" weight="fill" />
+                            </div>
+                            <span className="px-3 py-1 bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] font-bold uppercase tracking-wider rounded-full">
+                                Limited Slots
+                            </span>
+                        </div>
+
+                        <h3 className="font-display text-2xl font-bold text-white mb-2 relative z-10">
+                            1:1 Architecture Plan
+                        </h3>
+                        <p className="text-slate-400 text-sm mb-8 flex-grow leading-relaxed relative z-10">
+                            Turn your idea into software without writing code. A private 60-minute strategy session with a Senior Architect.
+                        </p>
+
+                        <div className="pt-6 border-t border-white/5 relative z-10">
+                            <div className="flex items-end gap-2 mb-4">
+                                <span className="text-3xl font-display font-bold text-white">
+                                    ₹8,999
+                                </span>
+                                <span className="text-xs text-slate-500 mb-1 uppercase tracking-wider">
+                                    / Session
+                                </span>
+                            </div>
+                            <Link
+                                href="/build"
+                                className="block w-full py-3 bg-white/10 text-white text-center font-bold hover:bg-white/20 transition-colors rounded-xl"
+                            >
+                                View Details
+                            </Link>
+                        </div>
+                    </div>
+                    {/* NEW PRODUCTS END */}
 
                     <div className="glass-card p-8 rounded-3xl flex flex-col relative overflow-hidden group opacity-60 hover:opacity-100 transition-all duration-500 border border-dashed border-slate-700">
                         <div className="flex justify-between items-start mb-6 relative z-10">
