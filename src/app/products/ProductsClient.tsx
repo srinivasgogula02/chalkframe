@@ -8,7 +8,7 @@ import {
     BriefcaseMetal,
     ArrowRight,
     CurrencyInr,
-    Star
+    Sparkle
 } from "@phosphor-icons/react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -40,7 +40,7 @@ export default function ProductsClient() {
             href: "/ai",
             price: "₹499 / mo",
             audience: "Professionals & Knowledge Workers",
-            color: "from-amber-500/20 to-orange-500/5",
+            color: "from-amber-500/10 to-transparent",
             borderColor: "border-amber-500/20",
             pill: "Subscription"
         },
@@ -52,7 +52,7 @@ export default function ProductsClient() {
             href: "/prototype",
             price: "₹24,999",
             audience: "Founders & Startups",
-            color: "from-[#00FF41]/20 to-emerald-500/5",
+            color: "from-[#00FF41]/10 to-transparent",
             borderColor: "border-[#00FF41]/20",
             pill: "Done-For-You"
         },
@@ -64,7 +64,7 @@ export default function ProductsClient() {
             href: "/prompting",
             price: "₹49",
             audience: "CS Students & Developers",
-            color: "from-fuchsia-500/20 to-purple-500/5",
+            color: "from-fuchsia-500/10 to-transparent",
             borderColor: "border-fuchsia-500/20",
             pill: "Live Training"
         },
@@ -76,19 +76,19 @@ export default function ProductsClient() {
             href: "/build",
             price: "₹8,999",
             audience: "Non-Technical Founders & Executives",
-            color: "from-blue-500/20 to-cyan-500/5",
+            color: "from-blue-500/10 to-transparent",
             borderColor: "border-blue-500/20",
             pill: "High-Ticket Consulting"
         }
     ];
 
     return (
-        <div className="min-h-screen bg-[#070b14] text-slate-300 font-sans selection:bg-white/10 flex flex-col">
+        <div className="min-h-screen bg-[#0E0E11] text-zinc-300 font-sans selection:bg-white/10 flex flex-col">
             <Navbar />
 
             <main className="flex-grow pt-32 pb-24 px-6 relative overflow-hidden">
-                {/* Ambient Background */}
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/5 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
+                {/* Core Chalkframe Ambient Glow */}
+                <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-white/5 blur-[120px] rounded-full pointer-events-none mix-blend-screen"></div>
 
                 <div className="max-w-7xl mx-auto relative z-10">
 
@@ -98,13 +98,13 @@ export default function ProductsClient() {
                         variants={staggerContainer}
                         className="text-center max-w-3xl mx-auto mb-20"
                     >
-                        <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-300 text-sm tracking-wide font-medium mb-6">
-                            <Star weight="fill" className="text-amber-400" /> Chalkframe Ecosystem
+                        <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-zinc-300 text-sm tracking-wide font-medium mb-6">
+                            <Sparkle weight="fill" className="text-white" /> Chalkframe Ecosystem
                         </motion.div>
-                        <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl lg:text-7xl font-display font-semibold text-white tracking-tight mb-6">
-                            Products & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Services.</span>
+                        <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl lg:text-7xl font-display font-medium text-white tracking-tight leading-[1.1] mb-6 drop-shadow-2xl">
+                            Products & <span className="text-zinc-500">Services.</span>
                         </motion.h1>
-                        <motion.p variants={fadeUp} className="text-lg md:text-xl text-slate-400 font-light leading-relaxed">
+                        <motion.p variants={fadeUp} className="text-lg md:text-xl text-zinc-400 font-light leading-relaxed">
                             We don't just teach technology, we build it. Select the solution below that matches your current operational bottleneck.
                         </motion.p>
                     </motion.div>
@@ -118,37 +118,37 @@ export default function ProductsClient() {
                         {products.map((product) => (
                             <motion.div key={product.id} variants={fadeUp}>
                                 <Link href={product.href} className="block group h-full">
-                                    <div className={`h-full bg-slate-900/40 border ${product.borderColor} rounded-3xl p-8 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:bg-slate-900/60 flex flex-col`}>
+                                    <div className="h-full bg-zinc-900/40 border border-white/5 backdrop-blur-md rounded-3xl p-8 relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-zinc-900/60 flex flex-col">
 
-                                        {/* Hover internal gradient */}
+                                        {/* Hover internal gradient - matching Chalkframe glass style */}
                                         <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
 
                                         <div className="relative z-10 flex flex-col h-full">
                                             <div className="flex justify-between items-start mb-6">
-                                                <div className="w-16 h-16 rounded-2xl bg-slate-950/50 flex items-center justify-center border border-white/5">
+                                                <div className="w-16 h-16 rounded-2xl bg-zinc-950/50 flex items-center justify-center border border-white/5 group-hover:border-white/10 transition-colors">
                                                     {product.icon}
                                                 </div>
-                                                <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-slate-300">
+                                                <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-widest text-zinc-300">
                                                     {product.pill}
                                                 </div>
                                             </div>
 
-                                            <div className="mb-2 text-xs font-semibold uppercase tracking-widest text-slate-500">
+                                            <div className="mb-2 text-xs font-semibold uppercase tracking-widest text-zinc-500">
                                                 For: {product.audience}
                                             </div>
 
-                                            <h2 className="text-2xl md:text-3xl font-display font-semibold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-400 transition-colors">
+                                            <h2 className="text-2xl md:text-3xl font-display font-medium text-white mb-4 transition-colors">
                                                 {product.title}
                                             </h2>
 
-                                            <p className="text-slate-400 text-sm md:text-base leading-relaxed mb-8 flex-grow">
+                                            <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-8 flex-grow">
                                                 {product.description}
                                             </p>
 
-                                            <div className="mt-auto pt-6 border-t border-slate-800 flex items-center justify-between group-hover:border-slate-700 transition-colors">
+                                            <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between group-hover:border-white/10 transition-colors">
                                                 <div className="flex items-center gap-1 font-mono">
-                                                    <span className="text-slate-500">Starting at</span>
-                                                    <span className="text-white font-bold ml-1">{product.price}</span>
+                                                    <span className="text-zinc-500">Starting at</span>
+                                                    <span className="text-white ml-1">{product.price}</span>
                                                 </div>
                                                 <div className="flex items-center gap-2 text-sm font-semibold text-white group-hover:translate-x-1 transition-transform">
                                                     Explore <ArrowRight weight="bold" />
