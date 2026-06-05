@@ -9,6 +9,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/vibecode",
+        destination: "/vibecode.html",
+      },
+    ];
+  },
   async headers() {
     return [
       {
