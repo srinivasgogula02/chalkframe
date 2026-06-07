@@ -46,13 +46,13 @@ const socialLinks = [
     },
     {
         label: "LinkedIn",
-        href: "https://linkedin.com/in/YOUR_HANDLE",
+        href: "https://linkedin.com/in/srinivasgogula",
         icon: LinkedinLogo,
         color: "hover:text-blue-400",
     },
     {
         label: "Twitter / X",
-        href: "https://twitter.com/YOUR_HANDLE",
+        href: "https://twitter.com/srinimyr",
         icon: TwitterLogo,
         color: "hover:text-sky-400",
     },
