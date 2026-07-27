@@ -89,6 +89,11 @@ export default function SrinivasAdsPage() {
               <img src="https://cdn.jobing.site/campaigns/2026/07/2e6f84bd-7eed-4f51-9ff2-e7741d5e69ab.jpg" alt="Srinivas Gogula" />
               <h3>Hi, I&apos;m Srinivas.</h3>
               <p>Freelance creative strategist and ad designer for businesses that want clearer, stronger marketing creatives.</p>
+              <div className={styles.socialLinks} aria-label="Srinivas Gogula on social media">
+                <a href="https://instagram.com/srinivasgogula.me" target="_blank" rel="noopener noreferrer" aria-label="Srinivas Gogula on Instagram">Instagram</a>
+                <a href="https://x.com/srinimyr" target="_blank" rel="noopener noreferrer" aria-label="Srinivas Gogula on X">X</a>
+                <a href="https://linkedin.com/in/srinivasgogula" target="_blank" rel="noopener noreferrer" aria-label="Srinivas Gogula on LinkedIn">LinkedIn</a>
+              </div>
               <strong>One person. Direct communication. No agency layers.</strong>
             </article>
             <article className={styles.aboutCopy}>
@@ -171,7 +176,6 @@ export default function SrinivasAdsPage() {
             <label><span>Website or social page</span><input name="website" type="url" placeholder="https://" /></label>
             <label><span>What are you promoting?</span><input name="offer" /></label>
             <label className={styles.full}><span>Project details</span><textarea name="message" placeholder="Share your campaign details or anything I should know" /></label>
-            <label className={styles.full}><span>Current creative (optional)</span><input name="creative" type="file" accept="image/*,.pdf" /></label>
             <button type="submit">Start a conversation</button>
           </form>
         </section>
