@@ -35,10 +35,10 @@ const work = [
 ];
 
 const services = [
-  ["Creative design", "Ads, posters and social creatives", "Performance-focused visuals that make offers easier to notice and understand."],
-  ["Chalkframe", "Website design and development", "Professional websites and landing pages designed around your business goals."],
-  ["Chalkframe", "Custom software and AI automations", "Purpose-built tools and workflows that reduce manual work and help your team move faster."],
-  ["Video portfolio", "Video editing", "High-quality editing for social media, promotional content and performance campaigns."],
+  ["Creative design", "Ads, posters and social creatives", "Performance-focused visuals that make offers easier to notice and understand.", "https://chalkframe.com"],
+  ["Chalkframe", "Website design and development", "Professional websites and landing pages designed around your business goals.", "https://chalkframe.com"],
+  ["Chalkframe", "Custom software and AI automations", "Purpose-built tools and workflows that reduce manual work and help your team move faster.", "https://chalkframe.com"],
+  ["Video portfolio", "Video editing", "High-quality editing for social media, promotional content and performance campaigns.", "https://vinaygogula.site/works"],
 ];
 
 export default function SrinivasAdsPage() {
@@ -78,7 +78,7 @@ export default function SrinivasAdsPage() {
         <div className={styles.trust}>
           <span>Work directly with me</span>
           <span>Designed for Meta Ads</span>
-          <span>24 to 48-hour turnaround</span>
+          <span>1 to 3-hour turnaround</span>
         </div>
 
         <section className={styles.section} id="about">
@@ -130,10 +130,11 @@ export default function SrinivasAdsPage() {
           <p className={styles.eyebrow}>More ways to grow</p>
           <h2>Creative and digital support for your business.</h2>
           <div className={styles.services}>
-            {services.map(([tag, title, copy]) => (
-              <article className={styles.service} key={title}>
+            {services.map(([tag, title, copy, href]) => (
+              <a className={styles.service} href={href} target="_blank" rel="noopener noreferrer" key={title}>
                 <span>{tag}</span><h3>{title}</h3><p>{copy}</p>
-              </article>
+                <strong>Explore service <span aria-hidden="true">↗</span></strong>
+              </a>
             ))}
           </div>
         </section>
