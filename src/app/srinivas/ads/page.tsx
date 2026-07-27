@@ -4,7 +4,7 @@ import styles from "./srinivas-ads.module.css";
 export const metadata: Metadata = {
   title: "Srinivas Gogula | Freelance Performance Creative Designer",
   description:
-    "Freelance Meta ad creative redesigns, promotional graphics, websites, custom software, AI automations and video editing for businesses.",
+    "Freelance Meta ad creative designs, promotional graphics, websites, custom software, AI automations and video editing for businesses.",
 };
 
 const work = [
@@ -41,6 +41,18 @@ const services = [
   ["Video portfolio", "Video editing", "High-quality editing for social media, promotional content and performance campaigns.", "https://vinaygogula.site/works"],
 ];
 
+function WorkCard({ item }: { item: (typeof work)[number] }) {
+  return (
+    <article className={styles.case}>
+      <div className={styles.caseMedia}>
+        <figure><img src={item.before} alt={`Original ${item.title} ad`} /><figcaption>Before</figcaption></figure>
+        <figure><img src={item.after} alt={`Redesigned ${item.title} ad`} /><figcaption>After</figcaption></figure>
+      </div>
+      <div className={styles.caseCopy}><h3>{item.title}</h3><p>{item.copy}</p></div>
+    </article>
+  );
+}
+
 export default function SrinivasAdsPage() {
   return (
     <main className={styles.page}>
@@ -60,8 +72,8 @@ export default function SrinivasAdsPage() {
             <p className={styles.eyebrow}>Freelance performance creative designer</p>
             <h1>Better ad creatives for local businesses.</h1>
             <p className={styles.heroCopy}>
-              I&apos;m Srinivas, a freelancer who redesigns Meta ads, promotional graphics
-              and posters so your offer is easier to notice, understand and act on—especially on mobile.
+              I&apos;m Srinivas, a freelancer who designs Meta ads, promotional graphics
+              and posters so your offer is easier to notice, understand and act on, especially on mobile.
             </p>
             <div className={styles.actions}>
               <a className={styles.primaryButton} href="#work">See before &amp; after</a>
@@ -114,15 +126,14 @@ export default function SrinivasAdsPage() {
           <h2>Before and after redesigns</h2>
           <p className={styles.lead}>A selection of ads redesigned to show how stronger clarity, hierarchy and presentation improve an offer.</p>
           <div className={styles.gallery}>
-            {work.map((item) => (
-              <article className={styles.case} key={item.title}>
-                <div className={styles.caseMedia}>
-                  <figure><img src={item.before} alt={`Original ${item.title} ad`} /><figcaption>Before</figcaption></figure>
-                  <figure><img src={item.after} alt={`Redesigned ${item.title} ad`} /><figcaption>After</figcaption></figure>
-                </div>
-                <div className={styles.caseCopy}><h3>{item.title}</h3><p>{item.copy}</p></div>
-              </article>
-            ))}
+            <div className={styles.galleryTrack}>
+              <div className={styles.gallerySet}>
+                {work.map((item) => <WorkCard item={item} key={item.title} />)}
+              </div>
+              <div className={`${styles.gallerySet} ${styles.gallerySetDuplicate}`} aria-hidden="true">
+                {work.map((item) => <WorkCard item={item} key={`duplicate-${item.title}`} />)}
+              </div>
+            </div>
           </div>
         </section>
 
